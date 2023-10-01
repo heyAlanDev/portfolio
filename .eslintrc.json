@@ -1,0 +1,75 @@
+{
+  "plugins": ["svelte", "astro"],
+  "root": true,
+  "extends": [
+    "standard-with-typescript",
+    "plugin:astro/recommended",
+    "plugin:svelte/recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "extraFileExtensions": ["*.svelte,*.astro,**"],
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "browser": true,
+    "es2017": true,
+    "node": true
+  },
+  "overrides": [
+    {
+      "env": {
+        "browser": true,
+        "es2021": true,
+        "node": true
+      },
+      "files": ["{js,ts, cjs}"],
+      "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+      }
+    },
+    {
+      "env": {
+        "node": true
+      },
+      "files": [".eslintrc.{js,cjs}"],
+      "parserOptions": {
+        "sourceType": "script"
+      }
+    },
+    {
+      "files": ["*.svelte"],
+      "parser": "svelte-eslint-parser",
+      "plugins": ["svelte"],
+      "parserOptions": {
+        "parser": {
+          "ts": "@typescript-eslint/parser",
+          "js": "espree",
+          "typescript": "@typescript-eslint/parser"
+        }
+      }
+    },
+    {
+      "files": ["*.astro"],
+      "plugins": ["astro"],
+      "env": {
+        "node": true,
+        "astro/astro": true,
+        "es2020": true
+      },
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"],
+        "sourceType": "module"
+      },
+      "rules": {
+        "astro/no-conflict-set-directives": "error",
+        "astro/no-unused-define-vars-in-style": "error"
+      }
+    }
+  ]
+}
+
