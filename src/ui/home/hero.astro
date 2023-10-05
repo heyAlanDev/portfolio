@@ -1,0 +1,47 @@
+---
+import Icon from '@components/icon.svelte'
+---
+
+<section class="w-full h-full flex flex-col bg-[#D2B48C] py-24 px-2">
+  <div class="w-auto h-full flex flex-col">
+    <h1 class="text-[#DCCCB2] font-extrabold text-center uppercase order-2">
+      I'm Alan Valencia<span class="hidden">Frontend Developer</span>
+    </h1>
+
+    <article
+      class="bg-[#7FEA89] w-fit flex flex-col gap-1 p-4 rounded-lg rotate-[-7.86deg] order-1 -mb-3"
+    >
+      <span class="uppercase text-2xl font-bold">Let’s connect</span>
+      <div class="flex gap-3">
+        <a href="/"> <Icon name='github' size='2rem'/> </a>
+        <a href="/"> </a>
+        <a href="/"> </a>
+      </div>
+    </article>
+
+    <article
+      class="bg-[#DA8EE4] w-max flex flex-col gap-1 p-4 rounded-lg rotate-[5.66deg] order-3 self-end"
+    >
+      <div class="flex">
+        <span class="capitalize text-2xl font-bold">More used tech</span>
+      </div>
+      <div class="flex gap-2">
+        <div class="tech-icon"></div>
+        <div class="tech-icon"></div>
+      </div>
+    </article>
+  </div>
+
+  <div class="flex flex-col justify-between items-start">
+    <div class="w-1/4"></div>
+    <div class="flex flex-col w-full">
+      <h2 class="text-3xl font-serif font-bold">Recent Projects</h2>
+    </div>
+  </div>
+  <style>
+    h1 {
+      font-size: clamp(4.5rem, 1.0588rem + 14.1176vw, 18rem);
+      line-height: 95%;
+    }
+  </style>
+</section>
