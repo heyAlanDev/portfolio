@@ -1,14 +1,14 @@
-<script>
+<script lang="ts">
   import ToggleThemeMode from './toggle-theme-mode.svelte'
   import ToggleLenguage from './toggle-language.svelte'
   import links from '@lib/page-navigation-links.json'
   import Logo from './logo.svelte'
   import Menu from './menu.svelte'
 
-  let isMenuOpen = false
+  let isMenuOpen: boolean = false
 
-  const toggleMenu = e => {
-    isMenuOpen = e.detail.isMenuOpen
+  const toggleMenu = (e: Event): void => {
+    isMenuOpen = (e as CustomEvent).detail.isMenuOpen
     document.body.classList.toggle('overflow-hidden')
   }
 </script>
@@ -26,8 +26,8 @@
 
   <div
     class="{isMenuOpen
-      ? 'md:flex-col flex-grow'
-      : 'hidden'} md:flex-row md:items-start"
+      ? 'flex-col flex-grow'
+      : 'hidden'} flex md:flex-row md:items-start"
   >
     <nav
       class="flex flex-col my-auto gap-8 md:flex-row md:flex-grow md:my-0 justify-center md:gap-10"

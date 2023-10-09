@@ -1,12 +1,10 @@
-<script>
-  import Icon from "./icon.svelte"
+<script lang="ts">
+  import Icon from './icon.svelte'
 
   const size = 32
   let isDark = false
 
-  const toggleBackground = () => {
-    isDark = !isDark
-  }
+  const toggleBackground = (): boolean => (isDark = !isDark)
 </script>
 
 <button
@@ -16,7 +14,15 @@
   on:click={toggleBackground}
 >
   <div class="grid">
-    <Icon class=" {!isDark ? 'hidden' : 'place-content-center'}" {size} name="moon"/>
-    <Icon class=" {isDark ? 'hidden' : 'place-content-center'}" {size} name="sun"/>
+    <Icon
+      class={!isDark ? 'hidden' : 'place-content-center'}
+      {size}
+      name="moon"
+    />
+    <Icon
+      class=" {isDark ? 'hidden' : 'place-content-center'}"
+      {size}
+      name="sun"
+    />
   </div>
 </button>
