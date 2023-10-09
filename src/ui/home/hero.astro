@@ -1,10 +1,14 @@
 ---
 import Icon from '@components/icon.svelte'
+import Link from '@components/link.svelte'
+import RecentProjects from './recent-projects.astro'
 ---
 
 <section class="w-full h-full flex flex-col bg-[#D2B48C] py-24 px-2">
   <div class="w-auto h-full flex flex-col">
-    <h1 class="text-[#DCCCB2] font-extrabold text-center uppercase order-2">
+    <h1
+      class="font-sans text-[#DCCCB2] font-extrabold text-center uppercase order-2"
+    >
       I'm Alan Valencia<span class="hidden">Frontend Developer</span>
     </h1>
 
@@ -13,7 +17,7 @@ import Icon from '@components/icon.svelte'
     >
       <span class="uppercase text-2xl font-bold">Let’s connect</span>
       <div class="flex gap-3">
-        <a href="/"> <Icon name='github' size='2rem'/> </a>
+        <a href="/"> <Icon name="github" size="2rem" /></a>
         <a href="/"> </a>
         <a href="/"> </a>
       </div>
@@ -36,11 +40,28 @@ import Icon from '@components/icon.svelte'
     <div class="w-1/4"></div>
     <div class="flex flex-col w-full">
       <h2 class="text-3xl font-serif font-bold">Recent Projects</h2>
+      <RecentProjects />
+      <div class="flex gap-2">
+        <Link
+          text="Download CV"
+          to="/"
+          color="gray"
+          textHoverColor="#D2B48C"
+          responsive
+        />
+        <Link
+          text="Hire me"
+          to="/"
+          color="gray"
+          textHoverColor="#D2B48C"
+          responsive
+        />
+      </div>
     </div>
   </div>
   <style>
     h1 {
-      font-size: clamp(4.5rem, 1.0588rem + 14.1176vw, 18rem);
+      font-size: clamp(3.625rem, 0.75rem + 14.375vw, 18rem);
       line-height: 95%;
     }
   </style>
