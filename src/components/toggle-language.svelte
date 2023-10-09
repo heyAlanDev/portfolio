@@ -22,6 +22,6 @@
   on:click={toggleLanguage}
   class="flex gap-1 justify-center items-center h-max w-max"
 >
-  <Icon name="language" size="32" color="red" />
+  <Icon name="language" size="40" color="#F3A7CA" />
   <span class="text-4xl font-bold">{LANGUAGE_SUPPORTED[currentLanguage]}</span>
 </button>

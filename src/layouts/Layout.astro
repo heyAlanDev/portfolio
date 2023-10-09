@@ -18,8 +18,8 @@ const { title } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
-    <Navbar client:load/>
+  <body class="w-full h-full">
+    <Navbar client:load />
     <slot />
   </body>
 </html>
@@ -31,32 +31,47 @@ const { title } = Astro.props
     --accent-dark: 49, 10, 101;
   }
 
-  html {
-    font-family: system-ui, sans-serif;
-    background: #13151a;
-    color: white;
-  }
-
-  body {
+  * {
     scrollbar-width: thin;
     scrollbar-color: #212121 #bebebe;
   }
 
-  body::-webkit-scrollbar {
+  *::-webkit-scrollbar {
     width: 0.25rem;
     height: 0.25rem;
   }
 
-  body::-webkit-scrollbar-track {
-    background-color: #727272;
+  *::-webkit-scrollbar-track {
+    background: rgb(179, 177, 177);
+    border-radius: 10px;
   }
 
-  body::-webkit-scrollbar-thumb {
-    background-color: #212121;
-    border-radius: 6px;
+  *::-webkit-scrollbar-thumb {
+    background: rgb(136, 136, 136);
+    border-radius: 10px;
   }
 
-  body::-webkit-scrollbar-thumb:hover {
-    background-color: #000;
+  *::-webkit-scrollbar-thumb:hover {
+    background: rgb(100, 100, 100);
+    border-radius: 10px;
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background: rgb(68, 68, 68);
+    border-radius: 10px;
+  }
+
+  html {
+    font-family: 'Poppins', system-ui, sans-serif;
+    background: #141214;
+    color: #0e1716;
+  }
+
+  body {
+    color: white;
+  }
+
+  .small-cap {
+    font-variant-caps: small-caps;
   }
 </style>
