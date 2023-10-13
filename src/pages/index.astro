@@ -1,10 +1,25 @@
 ---
 import Layout from '@layouts/layout.astro'
+import DetailedTitle from '@ui/home/detailed-title.svelte'
+import FavoriteProject from '@ui/home/favorite-project.svelte'
 import Hero from '@ui/home/hero.astro'
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <Hero />
+    <DetailedTitle title="Favorite projects" />
+    <FavoriteProject />
+    <FavoriteProject
+      imgPosition="right"
+      tecnologies={['javascript']}
+      class="!bg-amber-400"
+    />
+    <FavoriteProject imgPosition="left" class="!bg-red-400" />
+    <DetailedTitle
+      class="!text-pink-300"
+      title="See More"
+      direction="horizontal"
+    />
   </main>
 </Layout>
