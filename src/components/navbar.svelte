@@ -14,7 +14,7 @@
 </script>
 
 <header
-  class="flex fixed self-center w-full p-8 z-10 md:px-12 md:pt-8
+  class="flex fixed self-center w-full p-4 z-10 md:px-12
   {isMenuOpen ? 'bg-[#72FFD4] h-full flex-col over' : ''}"
 >
   <div class="w-full flex justify-between items-center md:w-max">
@@ -30,12 +30,12 @@
       : 'hidden'} flex md:flex-row md:items-start"
   >
     <nav
-      class="flex flex-col my-auto gap-8 md:flex-row md:flex-grow md:my-0 justify-center md:gap-10"
+      class="flex flex-col my-auto gap-4 md:flex-row md:flex-grow md:my-0 justify-center md:gap-10"
     >
       {#each links as { label, to } (label)}
         <a
           href={to}
-          class="font-serif text-5xl small-cap font-bold lg:text-3xl text-center hover:text-black"
+          class="font-serif text-5xl small-caps font-bold lg:text-3xl text-center hover:text-black"
         >
           {label}
         </a>
@@ -45,7 +45,7 @@
       <ToggleThemeMode />
       <ToggleLenguage />
     </div>
-    <p class="text-sm text-center md:hidden">
+    <p class="text-sm text-center py-2 md:hidden">
       ©2023 by Alan Valencia. ALL RIGHTS RESERVED.
     </p>
   </div>
