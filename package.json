@@ -10,7 +10,8 @@
     "astro": "astro",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write . --plugin=prettier-plugin-astro && prettier --write . --plugin=prettier-plugin-svelte"
+    "format": "prettier --write . --plugin=prettier-plugin-astro && prettier --write . --plugin=prettier-plugin-svelte",
+    "add:icon": "node ./src/utils/addIcon.cjs"
   },
   "dependencies": {
     "@astrojs/svelte": "4.0.3",
