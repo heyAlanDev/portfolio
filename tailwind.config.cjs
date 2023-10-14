@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['"Poppins"', ...defaultTheme.fontFamily.sans],
-        serif: ['"EB Garamond"', ...defaultTheme.fontFamily.sans]
+        serif: ['"EB Garamond"', ...defaultTheme.fontFamily.serif]
       }
     }
   },
