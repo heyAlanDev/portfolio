@@ -1,0 +1,54 @@
+---
+import ContactForm from '@components/contact-form.svelte'
+---
+
+<footer class="p-8 text-xl bg-blue-400 flex flex-col gap-16">
+  <header class="flex flex-col gap-8">
+    <p class="text-2xl font-medium">
+      Te envío un fuerte abrazo y ¡espero con ansias el tuyo!, aqui....
+    </p>
+
+    <a
+      href="mail:contacto@
+  alanvalencia.me"
+      class="font-semibold font-serif text-3xl"
+    >
+      contacto@ alanvalencia.me
+    </a>
+  </header>
+
+  <main class="flex flex-col gap-8">
+    <p>Esto va a ser el comienzo de algo increible</p>
+    <ContactForm client:visible />
+  </main>
+
+  <footer class="flex flex-col gap-6">
+    <p class="text-lg">Sigueme</p>
+    <ul>
+      <li class="text-2xl font-serif font-bold">Github</li>
+      <li class="text-2xl font-serif font-bold">Twitter</li>
+      <li class="text-2xl font-serif font-bold">Linkedin</li>
+    </ul>
+
+    <article>
+      <div class="opacity-80 w-24 h-8 lines"></div>
+      <div class="flex justify-between items-center text-sm">
+        <span>© 2023 by Alan Valencia</span>
+        <span>Legal</span>
+      </div>
+    </article>
+  </footer>
+</footer>
+
+<style>
+  .lines {
+    opacity: 0.8;
+    background: repeating-linear-gradient(
+      -45deg,
+      currentColor,
+      currentColor 2px,
+      transparent 2px,
+      transparent 8px
+    );
+  }
+</style>
