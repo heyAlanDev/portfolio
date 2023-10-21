@@ -25,7 +25,7 @@ function addIcon(svg, box, iconName) {
   iconName = iconName.toLowerCase()
   // Add the icon
   icons[iconName] = {
-    box: box,
+    box,
     svg
   }
 
@@ -40,9 +40,9 @@ const rl = readline.createInterface({
 })
 
 // Ask for user input
-rl.question('Enter the SVG of the icon: ', (svg) => {
-  rl.question('Enter the "box" property of the icon: ', (box) => {
-    rl.question('Enter the name of the icon: ', (iconName) => {
+rl.question('Enter the SVG of the icon: ', svg => {
+  rl.question('Enter the "box" property of the icon: ', box => {
+    rl.question('Enter the name of the icon: ', iconName => {
       addIcon(svg, parseInt(box, 10), iconName)
       console.log('Icon successfully added to icons.json.')
       rl.close()

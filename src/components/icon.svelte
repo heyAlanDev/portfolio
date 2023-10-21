@@ -3,8 +3,8 @@
   import type { IconName } from '@lib/icons.d.ts'
 
   export let name: IconName
-  export let size: string | undefined = '1rem'
-  export let color: string | undefined = 'currentColor'
+  export let size: string = '1rem'
+  export let color: string = 'currentColor'
 
   const displayIcon = icons[name]
 </script>

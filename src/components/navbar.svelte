@@ -14,10 +14,10 @@
 </script>
 
 <header
-  class="flex fixed self-center w-full p-4 z-10 md:px-12
+  class="flex fixed self-center w-full px-4 py-2 z-10 md:px-12
   {isMenuOpen ? 'bg-[#72FFD4] h-full flex-col over' : ''}"
 >
-  <div class="w-full flex justify-between items-center md:w-max">
+  <div class="w-full flex justify-between items-center md:w-max text-white">
     <Logo />
     <div class="md:hidden">
       <Menu on:toggle={toggleMenu} />
