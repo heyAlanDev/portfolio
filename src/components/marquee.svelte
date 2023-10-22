@@ -14,9 +14,9 @@
     {#each Array(2) as _}
       <div
         class="inline-flex"
-        class:motion-reduce:animate-marquee-regular={time === 'regular'}
-        class:motion-reduce:animate-marquee-fast={time === 'fast'}
-        class:motion-reduce:animate-marquee-slow={time === 'slow'}
+        class:animate-marquee-regular={time === 'regular'}
+        class:animate-marquee-fast={time === 'fast'}
+        class:animate-marquee-slow={time === 'slow'}
         style:animation-direction={reverse ? 'reverse' : null}
       >
         <slot />

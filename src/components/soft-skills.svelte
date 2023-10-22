@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { fly } from 'svelte/transition'
   import type { IconName } from '@lib/icons'
   import Icon from './icon.svelte'
 
@@ -16,7 +17,7 @@
     },
     {
       icon: 'solving-problems',
-      label: 'Solución de Problemas'
+      label: 'Solucion a problemas'
     },
     { icon: 'critical-thinking', label: 'Creatividad' },
     {
@@ -26,24 +27,13 @@
   ]
 
   let selectedSkillIndex = 0
-  let selectedSkillTransition = true
 
   const switchSkill: () => void = () => {
     selectedSkillIndex = (selectedSkillIndex + 1) % softSkills.length
-    console.log('change')
-  }
-
-  const startSkillAnimation: TimerHandler = () => {
-    selectedSkillTransition = true
-    switchSkill()
-
-    setTimeout(() => {
-      selectedSkillTransition = false
-    }, 3000)
   }
 
   onMount(() => {
-    const interval = setInterval(startSkillAnimation, 3500)
+    const interval = setInterval(switchSkill, 3000)
     return () => {
       clearInterval(interval)
     }
@@ -53,14 +43,17 @@
 <article class="rounded-2xl p-4 max-w-full bg-[#BC9CE7]">
   <header class="flex justify-between content-center mb-2">
     <h4 class="font-serif text-sm font-semibold">Habilidades blandas:</h4>
-    <p
-      class="capitalize font-bold self-center text-sm will-change-auto"
-      class:motion-reduce:animate-change={selectedSkillTransition}
-    >
-      {softSkills[selectedSkillIndex].label}
-    </p>
+
+    {#key selectedSkillIndex}
+      <p
+        class="capitalize font-bold self-center text-sm will-change-auto"
+        in:fly={{ y: -20 }}
+      >
+        {softSkills[selectedSkillIndex].label}
+      </p>
+    {/key}
   </header>
-  <footer class="flex gap-2">
+  <footer class="flex align-center justify-between gap-2">
     {#each softSkills as { icon, label }, i}
       <span
         class="rounded-full aspect-square p-2 bg-[#CFB2E6]"
