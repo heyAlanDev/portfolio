@@ -28,7 +28,6 @@ const { text = 'Hire me', as = 'button' } = Astro.props
     $contactMeLinks.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault()
-        console.log($firstInput)
         if ($firstInput === null) return
         $firstInput.focus()
       })
