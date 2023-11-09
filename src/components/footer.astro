@@ -1,5 +1,7 @@
 ---
 import ContactForm from '@components/contact-form.svelte'
+import SOCIAL_MEDIA from '@lib/social-media.json'
+import Link from '@components/link.svelte'
 ---
 
 <footer class="p-8 text-xl bg-blue-400 flex flex-col gap-16">
@@ -8,26 +10,28 @@ import ContactForm from '@components/contact-form.svelte'
       Te envío un fuerte abrazo y ¡espero con ansias el tuyo!, aqui....
     </p>
 
-    <a
-      href="mail:contacto@
-  alanvalencia.me"
-      class="font-semibold font-serif text-3xl"
-    >
+    <Link
+      to="mailto:contacto@alanvalencia.me"
+      class="font-semibold font-serif text-3xl !lowercase">
       contacto@ alanvalencia.me
-    </a>
+    </Link>
   </header>
 
   <main class="flex flex-col gap-8">
     <p>Esto va a ser el comienzo de algo increible</p>
-    <ContactForm client:visible />
+    <ContactForm API_KEY={import.meta.env.WEB3FORMS_API_KEY} client:load />
   </main>
 
   <footer class="flex flex-col gap-6">
     <p class="text-lg">Sigueme en</p>
     <ul>
-      <li class="text-2xl font-serif font-bold">Github</li>
-      <li class="text-2xl font-serif font-bold">Twitter</li>
-      <li class="text-2xl font-serif font-bold">Linkedin</li>
+      {
+        SOCIAL_MEDIA.map(({ name, to }) => (
+          <li class="text-2xl font-serif font-bold">
+            <Link {to} target="_blank" textHoverColor="white" text={name} />
+          </li>
+        ))
+      }
     </ul>
 
     <article>
