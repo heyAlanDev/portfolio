@@ -1,0 +1,37 @@
+---
+import Link from '@components/link.svelte'
+
+interface Props {
+  text: string
+  as: 'link' | 'button'
+}
+
+const { text = 'Hire me', as = 'button' } = Astro.props
+---
+
+<Link
+  {text}
+  to="#contact"
+  textHoverColor="#D2B48C"
+  responsive
+  {as}
+/>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const $contactMeLinks = document.querySelectorAll('[href="#contact"]')
+    const $firstInput = document.querySelector(
+      '#contact input#name'
+    ) as HTMLInputElement
+
+    if ($contactMeLinks === null) return
+    $contactMeLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault()
+        console.log($firstInput)
+        if ($firstInput === null) return
+        $firstInput.focus()
+      })
+    })
+  })
+</script>

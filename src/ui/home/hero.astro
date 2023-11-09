@@ -2,38 +2,41 @@
 import Icon from '@components/icon.svelte'
 import Link from '@components/link.svelte'
 import RecentProjects from './recent-projects.astro'
+import Card from '@components/card.astro'
+import TextStroke from '@components/text-stroke.svelte'
+import SOCIAL_MEDIA from '@lib/social-media.json'
+import { more_used as MORE_USED } from '@lib/tech-tools.json'
+import ContactMeLink from '@ui/contact-me-link.astro'
 ---
 
 <section class="w-full h-full flex flex-col bg-[#D2B48C] py-24 px-2">
   <div class="w-auto h-full flex flex-col">
     <h1
-      class="font-sans text-[#DCCCB2] font-extrabold text-center uppercase order-2"
-    >
-      I'm Alan Valencia<span class="hidden">Frontend Developer</span>
+      class="font-sans text-[#DCCCB2] font-black text-center uppercase order-2">
+      I'm Alan Valencia <span class="hidden">Frontend Developer</span>
     </h1>
 
-    <article
-      class="bg-[#7FEA89] w-fit flex flex-col gap-1 p-4 rounded-lg rotate-[-7.86deg] order-1 -mb-3"
-    >
-      <span class="uppercase text-2xl font-bold">Let’s connect</span>
-      <div class="flex gap-3">
-        <a href="/"> <Icon name="github" size="2rem" /></a>
-        <a href="/"> </a>
-        <a href="/"> </a>
+    <Card title="Let’s connect" position="left">
+      <div class="flex gap-3 justify-around items-center">
+        {
+          SOCIAL_MEDIA.map(({ to, icon }) => (
+            <Link {to} target="_blank" textHoverColor="white">
+              <Icon name={icon} size="2rem" />
+            </Link>
+          ))
+        }
       </div>
-    </article>
+    </Card>
 
-    <article
-      class="bg-[#DA8EE4] w-max flex flex-col gap-1 p-4 rounded-lg rotate-[5.66deg] order-3 self-end"
-    >
-      <div class="flex">
-        <span class="capitalize text-2xl font-bold">More used tech</span>
+    <TextStroke
+      class="order-3 w-1/2 min-w-[240px] self-center -rotate-6 -mt-4"
+    />
+
+    <Card title="More used tech" position="right" class="order-4">
+      <div class="flex gap-3 justify-around items-center">
+        {MORE_USED.map(tech => <Icon name={tech} size="2rem" />)}
       </div>
-      <div class="flex gap-2">
-        <div class="tech-icon"></div>
-        <div class="tech-icon"></div>
-      </div>
-    </article>
+    </Card>
   </div>
 
   <div class="flex flex-col justify-between items-start">
@@ -45,23 +48,17 @@ import RecentProjects from './recent-projects.astro'
         <Link
           text="Download CV"
           to="/"
-          color="gray"
           textHoverColor="#D2B48C"
           responsive
+          as="button"
         />
-        <Link
-          text="Hire me"
-          to="/"
-          color="gray"
-          textHoverColor="#D2B48C"
-          responsive
-        />
+        <ContactMeLink />
       </div>
     </div>
   </div>
   <style>
     h1 {
-      font-size: clamp(3.625rem, 0.75rem + 14.375vw, 18rem);
+      font-size: clamp(3.375rem, 0.15rem + 16.125vw, 19.5rem);
       line-height: 95%;
     }
   </style>

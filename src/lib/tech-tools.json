@@ -1,0 +1,21 @@
+{
+  "more_used": ["typescript", "javascript", "python", "react", "nodejs"],
+  "all": [
+    "typescript",
+    "html",
+    "css",
+    "javascript",
+    "nodejs",
+    "python",
+    "react",
+    "svelte",
+    "git",
+    "github",
+    "adobe-ae",
+    "adobe-illustrator",
+    "aws",
+    "figma",
+    "firebase",
+    "tailwindcss"
+  ]
+}

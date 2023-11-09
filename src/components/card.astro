@@ -1,0 +1,23 @@
+---
+interface Props {
+  title: string
+  position: 'left' | 'right'
+  class?: string
+}
+
+const { class: classname, title, position } = Astro.props
+---
+
+<article
+  class={`w-fit grid place-content-center gap-1 p-4 rounded-lg order-1 -mb-3 rotate-[-7.86deg] 
+  ${position === 'left' && 'bg-[#7FEA89] self-start'} 
+  ${position === 'right' && 'bg-[#DA8EE4] rotate-[5.66deg] self-end'}
+  ${classname}`}>
+  <h2
+    class=`uppercase text-xl font-extrabold 
+    ${position === 'left' && 'text-left'} 
+    ${position === 'right' && 'text-right'}`>
+    {title}
+  </h2>
+  <slot />
+</article>

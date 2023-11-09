@@ -1,0 +1,22 @@
+[
+  {
+    "name": "github",
+    "icon": "github",
+    "to": "https://www.github.com/imalanvalencia/"
+  },
+  {
+    "name": "linkedin",
+    "icon": "linkedin",
+    "to": "https://www.linkedin.com/in/alan-valencia/"
+  },
+  {
+    "name": "twitter",
+    "icon": "twitter-x",
+    "to": "https://twitter.com/imalanvalencia"
+  },
+  {
+    "name": "instagram",
+    "icon": "instagram",
+    "to": "https://www.instagram.com/imalanvalencia/"
+  }
+]
