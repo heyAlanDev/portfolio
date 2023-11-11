@@ -4,12 +4,14 @@
   import { launchMessage } from '@utils/launch-message'
   import Web3formsConfig from '@lib/web3forms-config.svelte'
   import OrbitalSpinner from './orbital-spinner.svelte'
+  import { fade } from 'svelte/transition'
 
   export let API_KEY = ''
 
   let textareaHeight = 0
   let status: 'nothing' | 'pending...' | 'finish' | 'resolved' = 'nothing'
   let errorMessage = ''
+  let mailResponse = false
 
   const resizeTextarea: (e: Event) => void = (e: Event) => {
     const { value, scrollHeight } = e.target as HTMLTextAreaElement
@@ -29,6 +31,8 @@
       .then(async response => {
         if (!response) {
           errorMessage = 'The form contact has a problem, try again later'
+          mailResponse = response
+
           try {
             return await launchMessage(errorMessage, 10000)
           } finally {
@@ -36,6 +40,7 @@
           }
         }
 
+        mailResponse = response
         form.reset()
         status = 'finish'
         await launchMessage('All has gone fine', 10000)
@@ -98,18 +103,26 @@
   </fieldset>
 
   <div class="flex w-full gap-4 justify-end">
-    {#if errorMessage !== '' && status !== 'resolved'}
+    {#if (status !== 'resolved' && status !== 'nothing') || errorMessage !== ''}
+      <OrbitalSpinner />
+    {/if}
+
+    {#if (errorMessage !== '' || !mailResponse) && status !== 'resolved'}
       <span class="text-xl font-semibold">{errorMessage}</span>
     {/if}
 
-    {#if (status !== 'resolved' && status !== 'nothing') || errorMessage !== ''}
-      <OrbitalSpinner />
+    {#if (errorMessage === '' || mailResponse) && status === 'finish'}
+      <img
+        src="assets/thanks-for-huge.svg"
+        alt="Thanks for the huge"
+        class="w-40 -my-16 z-10"
+        transition:fade />
     {/if}
   </div>
   <Button
     text="Ten tu abrazo Alan"
-    class="text-blue-400"
-    disabled={status === 'pending...'} />
+    class="text-blue-400 uppercase !text-xl !px-6"
+    disabled={status === 'pending...' || status === 'finish'} />
 </form>
 
 <style>
