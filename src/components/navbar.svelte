@@ -31,7 +31,7 @@
 </script>
 
 <header
-  class="flex flex-col justify-between content-center fixed w-full px-4 py-2 z-10 gap-2 md:px-6 md:py-6 md:items-start md:flex-row lg:px-12
+  class="flex flex-col justify-between content-center fixed w-full px-4 pt-2 z-10 gap-2 md:px-6 md:pt-6 md:items-start md:flex-row lg:px-12 lg:pt-4
   {isMenuOpen === true && 'h-full w-full'}"
 >
   <div class="flex justify-between items-center text-white">

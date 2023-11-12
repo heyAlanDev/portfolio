@@ -19,7 +19,7 @@
   role="slider"
   tabindex="0"
   aria-valuenow={xSliderScroll}
-  class="select-none flex overflow-x-scroll my-4"
+  class="select-none flex overflow-x-scroll"
   on:mousedown={dragStart}
   on:mousemove={dragMove}
   on:mouseup={dragStop}
