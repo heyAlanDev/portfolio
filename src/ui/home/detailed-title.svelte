@@ -6,7 +6,7 @@
 </script>
 
 <section
-  class="w-full md:min-h-[32rem] flex justify-center items-center px-8 py-16 text-orange-400 gap-8 {$$props.class}"
+  class="w-full md:min-h-[32rem] flex justify-center items-center px-8 py-16 text-orange-400 gap-8 lg:gap-10 xl:gap-12 xl:py-24 {$$props.class}"
   class:flex-col={direction === 'vertical'}
   class:flex-row={direction === 'horizontal'}
 >
@@ -21,7 +21,7 @@
     <Icon
       name="arrow"
       size="2rem"
-      class={direction === 'vertical' && 'rotate-90'}
+      class="lg:w-12 lg:h-12 xl:w-14 xl:h-14 2xl:w-18 2xl:h-18 {direction === 'vertical' && 'rotate-90'}"
     />
   </div>
 
