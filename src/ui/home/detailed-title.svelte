@@ -10,8 +10,14 @@
   class:flex-col={direction === 'vertical'}
   class:flex-row={direction === 'horizontal'}
 >
-  <h2 class="w-min text-center font-serif font-extrabold small-caps">{title}</h2>
-  <div class={direction === 'vertical' ? 'motion-reduce:animate-bounce' : 'motion-reduce:animate-bounce-left'}>
+  <h2 class="w-min text-center font-serif font-extrabold small-caps">
+    {title}
+  </h2>
+  <div
+    class={direction === 'vertical'
+      ? 'motion-reduce:animate-bounce'
+      : 'motion-reduce:animate-bounce-left'}
+  >
     <Icon
       name="arrow"
       size="2rem"

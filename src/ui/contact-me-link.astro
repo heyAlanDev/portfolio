@@ -9,13 +9,7 @@ interface Props {
 const { text = 'Hire me', as = 'button' } = Astro.props
 ---
 
-<Link
-  {text}
-  to="#contact"
-  textHoverColor="#D2B48C"
-  responsive
-  {as}
-/>
+<Link {text} to="#contact" textHoverColor="#D2B48C" responsive {as} />
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {

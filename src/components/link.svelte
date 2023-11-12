@@ -27,7 +27,8 @@
   style:--text-hover-color={textHoverColor}
   style:--anchor-color={SET_COLOR[color]}
   {target}
-  referrerpolicy={target === '_blank' ? 'no-referrer' : null}>
+  referrerpolicy={target === '_blank' ? 'no-referrer' : null}
+>
   {#if text}
     {text}
   {/if}

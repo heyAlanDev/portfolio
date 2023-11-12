@@ -42,14 +42,18 @@
     </div>
 
     <div class="flex flex-wrap gap-1 -ml-4">
-      <Link text="view Code" to="/" class="!py-2 !px-4" as="button"/>
-      <Link text="view Case" to="/" class="!py-2 !px-4" as="button"/>
-      <Link text="view Demo" to="/" class="!py-2 !px-4" as="button"/>
+      <Link text="view Code" to="/" class="!py-2 !px-4" as="button" />
+      <Link text="view Case" to="/" class="!py-2 !px-4" as="button" />
+      <Link text="view Demo" to="/" class="!py-2 !px-4" as="button" />
     </div>
 
     <div class="flex justify-between">
       <span class="text-base">categoria</span>
-      <Icon name="arrow" size="2rem" class="motion-reduce:animate-bounce-left"/>
+      <Icon
+        name="arrow"
+        size="2rem"
+        class="motion-reduce:animate-bounce-left"
+      />
     </div>
   </article>
 </section>
