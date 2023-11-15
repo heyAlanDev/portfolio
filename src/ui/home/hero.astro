@@ -39,10 +39,6 @@ import ContactMeLink from '@ui/contact-me-link.astro'
       </div>
     </Card>
 
-    <TextStroke
-      class="order-3 w-1/2 min-w-[240px] self-center -rotate-6 -mt-4 sm:order-4 z-[5]"
-    />
-
     <Card
       title="More used tech"
       position="right"
@@ -63,22 +59,26 @@ import ContactMeLink from '@ui/contact-me-link.astro'
   </div>
 
   <div
-    class="grid grid-rows-[1fr_max-height] grid-cols-1 lg:grid-cols-2 lg:grid-rows-1 content-between gap-4"
+    class="flex flex-col justify-center items-center gap-4  lg:justify-between lg:items-start lg:flex-row lg:gap-0"
   >
-    <div class="w-full h-full bg-square hidden lg:block"></div>
-    <div class="flex flex-col gap-4">
+    <TextStroke
+      class="w-4/5 min-w-[240px] max-w-4xl -rotate-6 z-[5] lg:order-2 lg:-mx-24 sm:-mt-8 2xl:gap-4"
+    />
+
+    <div class="flex flex-col gap-4 w-full lg:max-w-md">
       <h2 class="text-3xl font-serif font-bold">Recent Projects</h2>
       <RecentProjects />
-      <div class="flex gap-2 items-end">
-        <Link
-          text="Download CV"
-          to="/"
-          textHoverColor="#D2B48C"
-          responsive
-          as="button"
-        />
-        <ContactMeLink responsive />
-      </div>
+    </div>
+
+    <div class="flex gap-2 items-end order-3 flex-wrap-reverse self-start lg:justify-end">
+      <Link
+        text="Download CV"
+        to="/"
+        textHoverColor="#D2B48C"
+        responsive
+        as="button"
+      />
+      <ContactMeLink responsive />
     </div>
   </div>
 

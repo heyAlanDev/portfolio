@@ -6,11 +6,11 @@
 </script>
 
 <section
-  class="w-full md:min-h-[32rem] flex justify-center items-center px-8 py-16 text-orange-400 gap-8 lg:gap-10 xl:gap-12 xl:py-24 {$$props.class}"
+  class="w-full h-4/6 flex justify-center items-center px-8 py-28 text-orange-400 gap-8 whitespace-pre-line lg:min-h-[676px] lg:gap-10 xl:gap-12 xl:py-24 {$$props.class}"
   class:flex-col={direction === 'vertical'}
   class:flex-row={direction === 'horizontal'}
 >
-  <h2 class="w-min text-center font-serif font-extrabold small-caps">
+  <h2 class="text-center font-serif font-extrabold small-caps">
     {title}
   </h2>
   <div

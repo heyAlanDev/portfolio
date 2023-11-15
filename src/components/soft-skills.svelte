@@ -56,7 +56,7 @@
   <footer class="flex align-center justify-between gap-2">
     {#each softSkills as { icon, label }, i}
       <span
-        class="rounded-full aspect-square p-2 bg-[#CFB2E6] w-full"
+        class="rounded-full aspect-square p-2 bg-[#CFB2E6] w-full max-w-[56px]"
         class:!bg-purple-500={i === selectedSkillIndex}
         aria-label={label}
       >
