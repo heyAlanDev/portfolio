@@ -5,7 +5,7 @@
 </script>
 
 <article
-  class="rounded-2xl p-4 min-w-full bg-[--bg-color] text-current font-bold select-none"
+  class="rounded-2xl p-4 min-w-full bg-[--bg-color] text-current font-bold select-none {$$props.class}"
   style:--bg-color={bgColor}
 >
   <div
