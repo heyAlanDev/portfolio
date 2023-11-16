@@ -1,0 +1,20 @@
+---
+import Icon from '@components/icon.svelte'
+import type { TechTool } from '@lib/techs-tools'
+
+interface Props extends TechTool {}
+
+
+const { icon, text } = Astro.props
+---
+
+<article
+  class="mx-8 text-center flex flex-col justify-center items-center gap-2"
+>
+  <Icon
+    class="md:w-16 md:h-16 lg:w-24 lg:h-24 xl:w-24 xl:h-24 2xl:w-34 2xl:h-34"
+    name={icon}
+    size="3rem"
+  />
+  <span class="w-full text-xl font-normal">{text}</span>
+</article>
