@@ -4,7 +4,7 @@ import DetailedTitle from './detailed-title.svelte'
 import { chunkArray } from '@utils/array'
 import type { TechTool } from '@lib/techs-tools'
 import { all as TECHS_TOOLS } from '@lib/tech-tools.json'
-import TechToolComponent from './techs-tool.astro'
+import TechToolComponent from './tech-tool.astro'
 
 const techToolsChunks = chunkArray(
   TECHS_TOOLS as TechTool[],
@@ -16,7 +16,7 @@ const [firstChunk, secondChunk] = techToolsChunks
 <section class="flex flex-col py-16 gap-12 text-blue-500">
   <DetailedTitle
     title="Tech and \nTools"
-    class="!p-8 !pb-0 !min-h-min !text-current"
+    class="!p-8 !pb-0 !max-h-min !text-current !aspect-auto"
   />
 
   <article class="flex flex-col gap-6">
