@@ -91,7 +91,7 @@
     <label for="message">Message*</label>
   </fieldset>
 
-  <fieldset class="!flex-row-reverse gap-4">
+  <fieldset class="!flex-row-reverse gap-4 self-start">
     <label for="terms-conditions" class="!text-base !font-normal">
       I agree with the storage and processing of my personal data
     </label>
