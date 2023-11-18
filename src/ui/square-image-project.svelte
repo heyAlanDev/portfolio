@@ -7,7 +7,7 @@
 
   export let to: string = '#top'
   export let imgPosition: 'left' | 'right' = 'right'
-  export let tecnologies: IconName[] = ['javascript', 'react', 'nodejs', 'aws']
+  export let tecnologies: IconName[] = ['javascript', 'react', 'nodejs', 'aws', 'typescript']
   export let images: [Image, Image] = [
     { imgUrl: 'favicon.svg', alt: 'a' },
     { imgUrl: 'favicon.svg', alt: 'a' }
