@@ -21,7 +21,8 @@
     <Icon
       name="arrow"
       size="2rem"
-      class="lg:w-12 lg:h-12 xl:w-14 xl:h-14 2xl:w-18 2xl:h-18 {direction === 'vertical' && 'rotate-90'}"
+      class="lg:w-12 lg:h-12 xl:w-14 xl:h-14 2xl:w-18 2xl:h-18 {direction ===
+        'vertical' && 'rotate-90'}"
     />
   </div>
 

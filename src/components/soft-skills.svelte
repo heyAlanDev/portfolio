@@ -60,7 +60,7 @@
         class:!bg-purple-500={i === selectedSkillIndex}
         aria-label={label}
       >
-      <Icon name={icon} size="2rem" class="w-full h-full" />
+        <Icon name={icon} size="2rem" class="w-full h-full" />
       </span>
     {/each}
   </footer>
