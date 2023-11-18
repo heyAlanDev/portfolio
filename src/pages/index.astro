@@ -1,8 +1,7 @@
 ---
 import Layout from '@layouts/layout.astro'
 import AboutMe from '@ui/home/about-me.astro'
-import DetailedTitle from '@ui/home/detailed-title.svelte'
-import FavoriteProject from '@ui/home/favorite-project.svelte'
+import FavoritesProjects from '@ui/home/favorites-projects.astro'
 import Hero from '@ui/home/hero.astro'
 import TechsToolsSkills from '@ui/home/techs-tools-skills.astro'
 ---
@@ -10,20 +9,8 @@ import TechsToolsSkills from '@ui/home/techs-tools-skills.astro'
 <Layout title="Alan Valencia | Portfolio Fullstack Developer">
   <main>
     <Hero />
-    <DetailedTitle title="Favorite \nprojects" />
-    <FavoriteProject />
-    <FavoriteProject
-      imgPosition="right"
-      tecnologies={['javascript']}
-      class="!bg-amber-400"
-    />
-    <FavoriteProject imgPosition="left" class="!bg-red-400" />
-    <DetailedTitle
-      class="!text-pink-300 lg:!whitespace-nowrap"
-      title="See \nMore"
-      direction="horizontal"
-    />
-    <AboutMe />
-    <TechsToolsSkills />
+    <FavoritesProjects id="projects" />
+    <AboutMe id="about" />
+    <TechsToolsSkills id="tech-tool" />
   </main>
 </Layout>

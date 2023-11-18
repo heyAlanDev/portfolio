@@ -7,7 +7,7 @@
   }
 
   export let to: string
-  export let text: string
+  export let text: string | null = null
   export let color: keyof typeof SET_COLOR = 'black'
   export let textHoverColor: string = color === 'black' ? 'white' : 'black'
   export let target: HTMLAttributeAnchorTarget = '_self'
