@@ -26,8 +26,8 @@ import ContactMeLink from '@ui/contact-me-link.astro'
     >
       <div class="flex gap-3 justify-around items-center">
         {
-          SOCIAL_MEDIA.map(({ to, icon }) => (
-            <Link {to} target="_blank" textHoverColor="white">
+          SOCIAL_MEDIA.map(({ url, icon }) => (
+            <Link to={url} target="_blank" textHoverColor="white">
               <Icon
                 name={icon}
                 size="2rem"

@@ -2,21 +2,21 @@
   {
     "name": "github",
     "icon": "github",
-    "to": "https://www.github.com/imalanvalencia/"
+    "url": "https://www.github.com/imalanvalencia/"
   },
   {
     "name": "linkedin",
     "icon": "linkedin",
-    "to": "https://www.linkedin.com/in/alan-valencia/"
+    "url": "https://www.linkedin.com/in/alan-valencia/"
   },
   {
     "name": "twitter",
     "icon": "twitter-x",
-    "to": "https://twitter.com/imalanvalencia"
+    "url": "https://twitter.com/imalanvalencia"
   },
   {
     "name": "instagram",
     "icon": "instagram",
-    "to": "https://www.instagram.com/imalanvalencia/"
+    "url": "https://www.instagram.com/imalanvalencia/"
   }
 ]
