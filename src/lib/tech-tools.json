@@ -1,21 +1,24 @@
 {
   "more_used": ["typescript", "javascript", "python", "react", "nodejs"],
   "all": [
-    "typescript",
-    "html",
-    "css",
-    "javascript",
-    "nodejs",
-    "python",
-    "react",
-    "svelte",
-    "git",
-    "github",
-    "adobe-ae",
-    "adobe-illustrator",
-    "aws",
-    "figma",
-    "firebase",
-    "tailwindcss"
+    { "icon": "typescript", "text": "typescript" },
+    { "icon": "html", "text": "html" },
+    { "icon": "css", "text": "css" },
+    { "icon": "javascript", "text": "javascript" },
+    { "icon": "nodejs", "text": "nodejs" },
+    { "icon": "python", "text": "python" },
+    { "icon": "react", "text": "react" },
+    { "icon": "svelte", "text": "svelte" },
+    { "icon": "git", "text": "git" },
+    { "icon": "github", "text": "github" },
+    { "icon": "adobe-ae", "text": "adobe ae" },
+    {
+      "icon": "adobe-illustrator",
+      "text": "adobe illustrator"
+    },
+    { "icon": "aws", "text": "aws" },
+    { "icon": "figma", "text": "figma" },
+    { "icon": "firebase", "text": "firebase" },
+    { "icon": "tailwindcss", "text": "tailwindcss" }
   ]
 }

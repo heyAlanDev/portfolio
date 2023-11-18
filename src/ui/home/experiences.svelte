@@ -21,6 +21,17 @@
       company: 'Freelance',
       description:
         'Detalla tus responsabilidades y logros clave en cada posición. Utiliza viñetas y resalta las tareas y proyectos más relevantes. Cuantifica tus logros siempre que sea posible para demostrar tu impacto.'
+    },
+    {
+      job: 'Fullstack developer',
+      startDate: 'Ene 2020',
+      endDate: 'Dic 2023',
+      logros: [
+        'Enfatiza tus logros más sobresalientes en cada rol. Esto podría incluir mejoras en eficiencia, proyectos exitosos, reconocimientos o premios recibidos, o contribuciones al crecimiento de la empresa.'
+      ],
+      company: 'Freelance',
+      description:
+        'Detalla tus responsabilidades y logros clave en cada posición. Utiliza viñetas y resalta las tareas y proyectos más relevantes. Cuantifica tus logros siempre que sea posible para demostrar tu impacto.'
     }
   ]
 </script>

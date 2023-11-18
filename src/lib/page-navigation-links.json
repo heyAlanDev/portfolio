@@ -1,18 +1,18 @@
 [
   {
-    "to": "/",
+    "to": "#top",
     "label": "Home"
   },
   {
-    "to": "/about",
+    "to": "#about",
     "label": "About"
   },
   {
-    "to": "/projects",
+    "to": "#projects",
     "label": "Projects"
   },
   {
-    "to": "/contact",
+    "to": "#contact",
     "label": "Contact"
   }
 ]

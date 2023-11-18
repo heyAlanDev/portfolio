@@ -1,0 +1,28 @@
+---
+import Link from '@components/link.svelte'
+import DetailedTitle from './detailed-title.svelte'
+import SOCIAL_MEDIA from '@lib/social-media.json'
+import FullImageProject from '@ui/full-image-project.astro'
+import SquareImageProject from '@ui/square-image-project.svelte'
+
+const githubUrl = SOCIAL_MEDIA.find(social => social.name === 'github')
+---
+
+<DetailedTitle title="Favorite \nprojects" />
+
+<FullImageProject
+  tecnologies={['javascript', 'tailwindcss', 'react']}
+  images={[{ alt: 'a', imgUrl: 'favicon.svg' }]}
+  class="text-ellipsis"
+/>
+
+<SquareImageProject />
+<SquareImageProject imgPosition="left" class="!bg-red-400" />
+
+<Link to={githubUrl?.url} target="_blank" class="!text-pink-300">
+  <DetailedTitle
+    class="!text-current lg:!whitespace-nowrap"
+    title="See \nMore"
+    direction="horizontal"
+  />
+</Link>

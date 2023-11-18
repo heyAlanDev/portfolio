@@ -2,46 +2,43 @@
 import ContactForm from '@components/contact-form.svelte'
 import SOCIAL_MEDIA from '@lib/social-media.json'
 import Link from '@components/link.svelte'
+import { currentYear as year } from '@utils/date';
 ---
 
-<footer class="p-8 text-xl bg-blue-400 flex flex-col gap-16">
-  <header class="flex flex-col gap-8">
-    <p class="text-2xl font-medium">
-      Te envío un fuerte abrazo y ¡espero con ansias el tuyo!, aqui....
-    </p>
+<footer class="p-8 text-2xl bg-blue-400 grid gap-16 md:py-16 md:px-14 lg:py-20 lg:grid-cols-2 lg:gap-32 xl:pt-32 xl:text-3xl">
+  <p class="font-medium">
+    Te envío un fuerte abrazo y ¡espero con ansias el tuyo!, aqui....
+  </p>
 
-    <Link
-      to="mailto:contacto@alanvalencia.me"
-      class="font-semibold font-serif text-3xl !lowercase">
-      contacto@ alanvalencia.me
-    </Link>
-  </header>
+  <Link
+    to="mailto:contacto@alanvalencia.me"
+    class="font-semibold font-serif text-4xl !lowercase whitespace-pre-line"
+  >
+    {'contacto@\nalanvalencia.me'}
+  </Link>
 
-  <main class="flex flex-col gap-8">
-    <p>Esto va a ser el comienzo de algo increible</p>
-    <ContactForm API_KEY={import.meta.env.WEB3FORMS_API_KEY} client:load />
-  </main>
+  <p class="font-medium">
+    O aqui, se que esto va a ser el comienzo de algo increible
+  </p>
+  <ContactForm API_KEY={import.meta.env.WEB3FORMS_API_KEY} client:load />
 
-  <footer class="flex flex-col gap-6">
-    <p class="text-lg">Sigueme en</p>
+  <p class="font-medium">Sigueme en</p>
+  <article class="flex flex-col lg:flex-row justify-between">
     <ul>
       {
-        SOCIAL_MEDIA.map(({ name, to }) => (
-          <li class="text-2xl font-serif font-bold">
-            <Link {to} target="_blank" textHoverColor="white" text={name} />
+        SOCIAL_MEDIA.map(({ name, url }) => (
+          <li class="font-serif font-bold">
+            <Link to={url} target="_blank" textHoverColor="white" text={name} />
           </li>
         ))
       }
     </ul>
 
-    <article>
-      <div class="opacity-80 w-24 h-6 lines"></div>
-      <div class="flex justify-between items-center text-sm">
-        <span>© 2023 by Alan Valencia</span>
-        <span>Legal</span>
-      </div>
-    </article>
-  </footer>
+    <div class="flex flex-col text-sm">
+      <span class="opacity-80 w-24 h-6 lines"></span>
+      <span>© {year} by Alan Valencia</span>
+    </div>
+  </article>
 </footer>
 
 <style>

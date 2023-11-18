@@ -5,6 +5,7 @@ import Experiences from './experiences.svelte'
 import Icon from '@components/icon.svelte'
 import Marquee from '@components/marquee.svelte'
 import SoftSkills from '@components/soft-skills.svelte'
+import ContactMeLink from '@ui/contact-me-link.astro'
 
 const ACHIEVEMENTS = [
   {
@@ -60,27 +61,30 @@ const SOCIAL_NETWORKS = [
 ]
 ---
 
-<section class="flex flex-col gap-2 w-full p-6 bg-[#B26EEA]">
-  <header class="rounded-2xl p-4 max-w-full bg-[#BC9CE7]">
+<section
+  class="grid auto-rows-auto grid-cols-1 gap-2 w-full p-6 bg-[#B26EEA] md:grid-rows-7 md:grid-cols-2 xl:gap-4 xl:grid-cols-7 xl:grid-rows-[10] grid-flow-row"
+>
+  <header
+    class="rounded-2xl p-4 w-full bg-[#BC9CE7] row-start-1 font-serif xl:col-span-3 xl:row-span-2"
+  >
     <h3 class="text-2xl font-bold mb-1">
       Tienes ideas geniales en mente, Hagamos que sean codigo juntos.
     </h3>
-    <Link text="hagamosla digital" class="!font-bold float-right" as="button" textHoverColor="#BC9CE7" color="black" />
-  </header>
-  <article>
-    <img
-      class="rounded-2xl aspect-square object-cover max-w-full bg-[#BC9CE7]"
-      src=""
-      alt=""
+    <ContactMeLink
+      text="hagamosla digital"
+      className="!font-bold float-right"
+      textHoverColor="#BC9CE7"
     />
-    <img src="assets/dance-to-life.svg" alt="Dance to life" class="w-48 -mt-24 float-right">
-  </article>
-  <article class="flex gap-1">
+  </header>
+
+  <article
+    class="flex gap-1 md:col-start-1 md:row-start-2 xl:col-span-3 xl:row-span-2 xl:col-start-1 xl:row-start-3"
+  >
     {
       ACHIEVEMENTS.map(({ value, description }, index) => (
         <p
           class:list={[
-            'text-xl/3 text-center font-bold rounded-2xl py-4 px-2 w-1/3',
+            'text-xl/3 text-center font-bold rounded-2xl py-4 px-2 w-1/3 grid place-content-center',
             { 'bg-emerald-400': index === 0 },
             { 'bg-amber-400': index === 1 },
             { 'bg-rose-400': index === 2 }
@@ -93,7 +97,33 @@ const SOCIAL_NETWORKS = [
     }
   </article>
 
-  <article class="rounded-2xl p-4 max-w-full bg-[#BC9CE7]">
+  <article
+    class="rounded-2xl p-4 w-full bg-[#BC9CE7] flex justify-between items-center xl:col-span-2 xl:col-start-6 xl:row-start-2"
+  >
+    <h5 class="font-serif text-base font-semibold">Nombre:</h5>
+    <p class="text-sm capitalize w-max self-center font-semibold">
+      Alan Smith Valencia Izquierdo
+    </p>
+  </article>
+
+  <article
+    class="md:row-span-4 md:col-start-2 md:row-start-1 xl:col-span-2 xl:row-span-5 xl:col-start-4 xl:row-start-2"
+  >
+    <img
+      class="rounded-2xl aspect-square object-cover w-full bg-[#BC9CE7]"
+      src=""
+      alt=""
+    />
+    <img
+      src="assets/dance-to-life.svg"
+      alt="Dance to life"
+      class="w-48 -mt-24 float-right md:w-40"
+    />
+  </article>
+
+  <article
+    class="rounded-2xl p-4 w-full bg-[#BC9CE7] md:row-start-6 xl:col-span-2 xl:row-span-4 xl:col-start-6 xl:row-start-7"
+  >
     <header class="flex justify-between content-center mb-2">
       <h4 class="text-2xl font-bold font-serif">About me</h4>
       <a href="/" class="capitalize self-center">resume</a>
@@ -107,18 +137,15 @@ const SOCIAL_NETWORKS = [
       posuere.
     </p>
   </article>
+
+  <SoftSkills
+    class="md:row-start-5 xl:col-span-2 xl:row-span-2 xl:col-start-6 xl:row-start-3"
+    client:visible
+  />
+
   <article
-    class="rounded-2xl p-4 max-w-full bg-[#BC9CE7] flex justify-between content-center"
+    class="rounded-2xl p-4 w-full bg-[#BC9CE7] md:row-start-5 xl:col-span-2 xl:col-start-6 xl:row-start-5"
   >
-    <h5 class="font-serif text-base font-semibold">Nombre:</h5>
-    <p class="text-sm capitalize w-max self-center font-semibold">
-      Alan Smith Valencia Izquierdo
-    </p>
-  </article>
-
-  <SoftSkills client:visible />
-
-  <article class="rounded-2xl p-4 max-w-full bg-[#BC9CE7]">
     <h4 class="font-serif text-base font-semibold mb-2">Idiomas:</h4>
 
     <footer class="flex justify-between gap-2">
@@ -127,7 +154,10 @@ const SOCIAL_NETWORKS = [
       <p class="w-min text-center font-bold">Frances (A1)</p>
     </footer>
   </article>
-  <article class="rounded-2xl p-4 w-full bg-[#BC9CE7]">
+
+  <article
+    class="rounded-2xl p-4 w-full bg-[#BC9CE7] md:row-start-6 content-between xl:col-span-3 xl:row-span-2 xl:col-start-1 xl:row-start-5"
+  >
     <header class="flex justify-between content-center">
       <h4 class="text-2xl font-bold font-serif">Certification</h4>
       <a href="/" class="capitalize self-center">see all</a>
@@ -135,26 +165,35 @@ const SOCIAL_NETWORKS = [
 
     <Certifications />
   </article>
-  <article class="rounded-2xl p-4 max-w-full bg-[#BC9CE7]">
+
+  <article
+    class="rounded-2xl p-4 w-full bg-[#BC9CE7] md:col-span-2 xl:col-span-5 xl:row-span-4 xl:col-start-1 xl:row-start-7"
+  >
     <header class="flex justify-between content-center">
       <h4 class="text-2xl font-bold font-serif">Experience</h4>
       <a href="/" class="capitalize self-center">see all</a>
     </header>
     <Experiences />
   </article>
-  <article class="rounded-2xl p-4 max-w-full bg-[#BC9CE7]">
-    <div class="flex text- justify-center items-center gap-2">
-      {
-        SOCIAL_NETWORKS.map(({ to, social }) => (
-          <a href={to} class="rounded-full bg-[#CFB2E6] aspect-square p-2">
-            <Icon name={social} size="1.25rem" />
-          </a>
-        ))
-      }
-    </div>
+
+  <article
+    class="rounded-2xl p-4 w-full bg-[#BC9CE7] md:row-start-4 xl:col-span-2 xl:col-start-6 xl:row-start-6 flex justify-center items-center gap-2"
+  >
+    {
+      SOCIAL_NETWORKS.map(({ to, social }) => (
+        <Link href={to} class="rounded-full bg-[#CFB2E6] aspect-square p-2 w-full max-w-[56px]">
+          <Icon name={social} size="1.25rem" class="w-full h-full" />
+        </Link>
+      ))
+    }
   </article>
 
-  <Marquee>
+  <Marquee
+    class="md:col-span-2 md:row-span-5 xl:col-span-4 xl:col-start-4 xl:row-start-1 xl:row-span-1"
+  >
     <p>• Innovando el futuro, una línea de código a la vez!</p>
+    <p class="hidden md:block">
+      • Innovando el futuro, una línea de código a la vez!
+    </p>
   </Marquee>
 </section>

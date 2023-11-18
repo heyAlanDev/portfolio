@@ -4,17 +4,29 @@ import Link from '@components/link.svelte'
 interface Props {
   text: string
   as: 'link' | 'button'
+  responsive: boolean
+  textHoverColor: string
+  className: string
 }
 
-const { text = 'Hire me', as = 'button' } = Astro.props
+const {
+  text = 'Hire me',
+  textHoverColor = '#D2B48C',
+  as = 'button',
+  responsive = false,
+  className,
+  ...rest
+} = Astro.props
 ---
 
 <Link
+  class={className}
   {text}
-  to="#contact"
-  textHoverColor="#D2B48C"
-  responsive
   {as}
+  {responsive}
+  {rest}
+  {textHoverColor}
+  to="#contact"
 />
 
 <script>

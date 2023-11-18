@@ -1,0 +1,30 @@
+---
+import Marquee from '@components/marquee.svelte'
+import DetailedTitle from './detailed-title.svelte'
+import { chunkArray } from '@utils/array'
+import type { TechTool } from '@lib/techs-tools'
+import { all as TECHS_TOOLS } from '@lib/tech-tools.json'
+import TechToolComponent from './tech-tool.astro'
+
+const techToolsChunks = chunkArray(
+  TECHS_TOOLS as TechTool[],
+  Math.ceil(TECHS_TOOLS.length / 2)
+)
+const [firstChunk, secondChunk] = techToolsChunks
+---
+
+<section class="flex flex-col py-16 gap-12 text-blue-500">
+  <DetailedTitle
+    title="Tech and \nTools"
+    class="!p-8 !pb-0 !max-h-min !text-current !aspect-auto"
+  />
+
+  <article class="flex flex-col gap-6 text-blue-400">
+    <Marquee bgColor="#141214" time="regular">
+      {firstChunk.map(({ icon, text }) => <TechToolComponent {icon} {text} />)}
+    </Marquee>
+    <Marquee bgColor="#141214" time="regular" reverse>
+      {secondChunk.map(({ icon, text }) => <TechToolComponent {icon} {text} />)}
+    </Marquee>
+  </article>
+</section>

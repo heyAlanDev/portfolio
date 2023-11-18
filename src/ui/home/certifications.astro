@@ -1,36 +1,32 @@
 ---
 import Carousel from '@components/carousel.svelte'
 import Icon from '@components/icon.svelte'
+import Link from '@components/link.svelte';
 
 const certifications = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 
 // Date format util
-// new Intl.DateTimeFormat('es-ES', { month: 'short', year: 'numeric' }).format(new Date(`December 1, 2000`))
+// new Intl.DateTimeFormat('es-ES', { month: 'short', year: 'numeric' }).format(new Date(`December, 2000`))
 ---
 
 <Carousel client:visible>
   {
     certifications.map(index => (
-      <a href="#top">
-        <div class="w-56 h-40 bg-green-500 p-4 rounded-3xl text-white relative grid place-content-center">
-          <img
-            src="favicon.svg"
-            alt=""
-            class="object-cover"
-            draggable="false"
-          />
-          <article class="flex flex-col-reverse justify-between absolute inset-0 bg-black/60 rounded-3xl p-4 g-1">
-            <div>
-              <h5 class="text-base capitalize font-bold">Title {index}</h5>
-              <p class="text-sm whitespace-nowrap">Issued by: SENA</p>
-              <p class="text-sm whitespace-nowrap capitalize">
-                mar 2020 - dic 2021
-              </p>
-            </div>
-            <Icon name="link-external" size="2rem" class="self-end" />
-          </article>
-        </div>
-      </a>
+      <div class="w-56 h-40 bg-green-500 p-4 rounded-3xl text-white relative grid place-content-center">
+        <img src="favicon.svg" alt="" class="object-cover" draggable="false" />
+        <article class="flex flex-col-reverse justify-between absolute inset-0 bg-black/60 rounded-3xl p-4 g-1">
+          <div>
+            <h5 class="text-base capitalize font-bold">Title {index}</h5>
+            <p class="text-sm whitespace-nowrap">Issued by: SENA</p>
+            <p class="text-sm whitespace-nowrap capitalize">
+              mar 2020 - dic 2021
+            </p>
+          </div>
+          <Link to="#top" draggable="false" class="self-end" color="white">
+            <Icon name="link-external" size="2rem" />
+          </Link>
+        </article>
+      </div>
     ))
   }
 </Carousel>
