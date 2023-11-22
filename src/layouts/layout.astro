@@ -13,7 +13,7 @@ const { title } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark bg-black-400 font-sans">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -25,7 +25,7 @@ const { title } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title ?? 'Alan Valencia'}</title>
   </head>
-  <body class="w-full h-full">
+  <body class="w-full h-full transition-colors text-black-400 dark:text-slate-100">
     <Navbar client:load />
     <slot />
     <Footer id="#contact" />
@@ -67,12 +67,6 @@ const { title } = Astro.props
   *::-webkit-scrollbar-thumb:active {
     background: rgb(68, 68, 68);
     border-radius: 10px;
-  }
-
-  html {
-    background: #141214;
-    color: #0e1716;
-    @apply font-sans;
   }
 
   .small-caps {

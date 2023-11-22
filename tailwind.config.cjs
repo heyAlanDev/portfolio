@@ -2,12 +2,33 @@
 import defaultTheme from 'tailwindcss/defaultTheme'
 
 module.exports = {
+  darkMode: 'class',
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       fontFamily: {
         sans: ['"Archivo Variable"', ...defaultTheme.fontFamily.sans],
         serif: ['"Crimson Pro Variable"', ...defaultTheme.fontFamily.serif]
+      },
+
+      colors: {
+        black: {
+          400: '#141214',
+          500: '#0e1716',
+          DEFAULT: '#000000'
+        },
+        brown: {
+          50: '#fbf8f4',
+          100: '#f1e8db',
+          200: '#eaddca',
+          300: '#e1cdb2',
+          400: '#dbc3a3',
+          500: '#d2b48c',
+          600: '#bfa47f',
+          700: '#958063',
+          800: '#74634d',
+          900: '#584c3b'
+        }
       },
 
       animation: {
