@@ -35,7 +35,8 @@ module.exports = {
         'marquee-slow': 'marquee 30s linear infinite',
         'marquee-fast': 'marquee 5s linear infinite',
         'marquee-regular': 'marquee 15s linear infinite',
-        'bounce-left': 'bounce-left 1s infinite'
+        'bounce-left': 'bounce-left 1s infinite',
+        fade: 'fade 1s ease-in-out'
       },
       keyframes: {
         marquee: {
@@ -44,15 +45,26 @@ module.exports = {
         },
         'bounce-left': {
           '0%, 100%': {
-            transform: 'translateX(-25%);',
-            'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1);'
+            transform: 'translateX(-25%)',
+            'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)'
           },
           '50%': {
-            transform: 'translateX(0);',
-            'animation-timing-function': ' cubic-bezier(0, 0, 0.2, 1);'
+            transform: 'translateX(0)',
+            'animation-timing-function': ' cubic-bezier(0, 0, 0.2, 1)'
+          }
+        },
+        fade: {
+          from: {
+            opacity: '0',
+            transform: 'translateY(10px)'
+          },
+          to: {
+            opacity: '1',
+            transform: 'translateY(0px)'
           }
         }
       }
+
     }
   },
   plugins: []
