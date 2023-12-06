@@ -30,6 +30,9 @@ module.exports = {
           900: '#584c3b'
         }
       },
+      screens: {
+        xxl: '1920px'
+      },
 
       animation: {
         'marquee-slow': 'marquee 30s linear infinite',

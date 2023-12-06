@@ -7,14 +7,16 @@ import TextStroke from '@components/text-stroke.svelte'
 import SOCIAL_MEDIA from '@lib/social-media.json'
 import { more_used as MORE_USED } from '@lib/tech-tools.json'
 import ContactMeLink from '@ui/contact-me-link.astro'
+import Container from '@ui/container.svelte'
 ---
 
-<section
-  class="w-full h-full bg-[#D2B48C] py-24 px-2 md:px-6 lg:px-10 lg:py-24 max-w-[1920px]"
+<Container
+  color="brown-500"
+  class="py-24 px-2 from-brown-500 to-brown-500 md:px-6 lg:px-10 lg:py-24"
 >
-  <div class="w-auto h-full flex flex-col">
+  <article class="w-auto h-full flex flex-col">
     <h1
-      class="font-sans text-[#DCCCB2] font-black text-center uppercase order-2"
+      class="font-sans text-brown-300 dark:text-brown-500 font-black text-center uppercase order-2 text-[clamp(3.375rem,0.15rem+16.125vw,19.5rem)] leading-[95%]"
     >
       I'm Alan Valencia <span class="hidden">Frontend Developer</span>
     </h1>
@@ -22,12 +24,12 @@ import ContactMeLink from '@ui/contact-me-link.astro'
     <Card
       title="Let’s connect"
       position="left"
-      class="order-1 sm:ml-16 sm:-mb-12 lg:ml-28 lg:-mb-16 xl:-mb-24 2xl:-mb-32"
+      class="order-1 sm:ml-16 sm:-mb-12 md:m-6 lg:ml-28 lg:-mb-16 xl:-mb-24 2xl:-mb-32"
     >
       <div class="flex gap-3 justify-around items-center">
         {
           SOCIAL_MEDIA.map(({ url, icon }) => (
-            <Link to={url} target="_blank" textHoverColor="white">
+            <Link to={url} target="_blank" class="hover:text-slate-100 dark:hover:text-black-500">
               <Icon
                 name={icon}
                 size="2rem"
@@ -56,50 +58,33 @@ import ContactMeLink from '@ui/contact-me-link.astro'
         }
       </div>
     </Card>
-  </div>
+  </article>
 
-  <div
-    class="flex flex-col justify-center items-center gap-4 lg:justify-between lg:items-start lg:flex-row lg:gap-0"
+  <article
+    class="flex flex-col justify-center items-center gap-4 pt-6 lg:justify-between lg:items-start lg:flex-row lg:gap-0"
   >
-    <TextStroke
-      class="w-4/5 min-w-[240px] max-w-4xl -rotate-6 z-[5] lg:order-2 lg:-mx-24 sm:-mt-8 2xl:gap-4"
-    />
+    <article
+      class="w-4/5 relative top-1/2 max-w-4xl z-[5] -rotate-12 lg:w-full lg:-mx-11 lg:-mt-10 lg:order-2 xl:-mx-6 2xl:gap-4"
+    >
+      <TextStroke />
+    </article>
 
-    <div class="flex flex-col gap-4 w-full lg:max-w-md">
+    <article class="flex flex-col gap-4 w-full lg:max-w-md">
       <h2 class="text-3xl font-serif font-bold">Recent Projects</h2>
       <RecentProjects />
-    </div>
+    </article>
 
-    <div
-      class="flex gap-2 items-end order-3 flex-wrap-reverse self-start lg:justify-end"
+    <article
+      class="flex gap-2 items-end order-3 flex-wrap-reverse self-start lg:justify-end min-w-max"
     >
       <Link
+        class="px-10 hover:text-brown-500 dark:hover:bg-brown-500 active:text-brown-500 dark:active:bg-brown-500 md:text-xl"
         text="Download CV"
         to="/"
-        textHoverColor="#D2B48C"
-        responsive
         as="button"
       />
-      <ContactMeLink responsive />
-    </div>
-  </div>
+      <ContactMeLink className="px-12 hover:text-brown-500 dark:hover:bg-brown-500 active:text-brown-500 dark:active:bg-brown-500 md:text-xl" />
+    </article>
+  </article>
 
-  <style>
-    h1 {
-      font-size: clamp(3.375rem, 0.15rem + 16.125vw, 19.5rem);
-      line-height: 95%;
-    }
-
-    .bg-square {
-      background-image: repeating-conic-gradient(
-        #fefefe 0% 25%,
-        transparent 0% 50%
-      );
-      background-position:
-        0 0,
-        32px 32px;
-      background-size: 64px 64px;
-      background-color: transparent;
-    }
-  </style>
-</section>
+</Container>
