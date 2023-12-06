@@ -13,7 +13,7 @@ const { title } = Astro.props
 ---
 
 <!doctype html>
-<html lang="en" class="dark bg-black-400 font-sans">
+<html lang="es" class="bg-black-400 font-sans">
   <head>
     <meta charset="UTF-8" />
     <meta
@@ -25,9 +25,11 @@ const { title } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title ?? 'Alan Valencia'}</title>
   </head>
-  <body class="w-full h-full transition-colors text-black-400 dark:text-slate-100">
+  <body class="w-full h-full flex content-center flex-col justify-center transition-colors text-black-400 dark:text-slate-100">
     <Navbar client:load />
-    <slot />
+    <main>
+      <slot />
+    </main>
     <Footer id="#contact" />
   </body>
 </html>
