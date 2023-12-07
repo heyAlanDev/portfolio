@@ -61,7 +61,7 @@
 </script>
 
 <form
-  id="contact"
+  id="contact-form"
   action="https://api.web3forms.com/submit"
   method="POST"
   class="flex flex-col gap-8 w-full {errorMessage !== '' && 'text-red-700'}"
@@ -100,7 +100,7 @@
       type="checkbox"
       name="terms-conditions"
       id="terms-conditions"
-      class="appearance-none border-2 border-current border-[#0e1716] w-8 h-8 aspect-square checked:bg-[#0e1716] checked:after:content-[''] checked:after:absolute checked:after:border-blue-400 checked:after:border-r-4 checked:after:border-b-4 checked:after:rotate-45 checked:after:w-[.5em] checked:after:h-[1em] checked:after:translate-x-2 checked:after:translate-y-0.5"
+      class="appearance-none border-2 border-current w-8 h-8 aspect-square relative after:absolute after:left-1/2 after:top-[45%] checked:bg-current checked:after:content-[''] checked:after:border-blue-400 checked:after:border-r-4 checked:after:border-b-4 checked:after:rotate-45 checked:after:w-2/5 checked:after:h-4/5 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
       required
     />
   </fieldset>
