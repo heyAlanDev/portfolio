@@ -2,13 +2,13 @@
   import ToggleThemeMode from './toggle-theme-mode.svelte'
   import ToggleLenguage from './toggle-language.svelte'
   import links from '@lib/page-navigation-links.json'
-  import Logo from './logo.svelte'
   import Menu from './menu.svelte'
   import Link from './link.svelte'
   import { onMount } from 'svelte'
+  import { currentYear } from '@utils/date'
 
-  let isMenuOpen: boolean | null = false
-  let hasMenu: boolean
+  let isMenuOpen: boolean
+  let scrollPosition: boolean
 
   const toggleMenu = (e: Event): void => {
     isMenuOpen = (e as CustomEvent).detail.isMenuOpen
@@ -16,91 +16,69 @@
   }
 
   onMount(() => {
+    scrollPosition = window.scrollY > 100
+
+    window.onscroll = function () {
+      scrollPosition = window.scrollY > 100
+    }
+
     const mediaListener = window.matchMedia('(min-width: 768px)')
-    hasMenu = !mediaListener.matches
+    isMenuOpen = mediaListener.matches
 
     mediaListener.addEventListener('change', e => {
-      console.log({ hasMenu, isMenuOpen, match: e.matches }, 'on medialistener')
-      hasMenu = !mediaListener.matches
-      if (e.matches) return (isMenuOpen = null)
+      if (e.matches) return (isMenuOpen = true)
       return (isMenuOpen = false)
     })
-
-    isMenuOpen = hasMenu ? false : null
   })
 </script>
 
 <header
-  class="flex flex-col justify-between content-center fixed w-full px-4 pt-2 z-10 gap-2 md:px-6 md:pt-6 md:items-start md:flex-row lg:px-12 lg:pt-4
-  {isMenuOpen === true && 'h-full w-full'}"
+  class=" bg-brown-500 dark:bg-transparent sticky left-0 top-0 w-full z-40 overflow-hidden 
+  {isMenuOpen && 'max-sm:h-screen max-sm:pb-4'}
+  {scrollPosition && 'bg-transparent'}
+  {$$props.class}"
 >
-  <div class="flex justify-between items-center text-white">
-    <Logo />
-    <div class="md:hidden">
-      <Menu on:toggle={toggleMenu} />
-    </div>
-  </div>
-
-  {#if hasMenu}
-    <span
-      class="absolute top-[66px] right-8 -z-10 rounded-full w-1 h-1 bg-[#72FFD4]
-    {isMenuOpen === true
-      ? 'bg-[#72FFD4] scale-[500] transition-out'
-      : 'transition-in'}"
+  <section
+    class="w-full h-full max-w-screen-xxl flex flex-col justify-between z-50 content-center m-auto  relative translate-y-4 transition-transform md:items-start md:flex-row px-4 pt-6 md:px-6 md:pb-0 lg:px-12 {scrollPosition && '!translate-y-0'}"
+  >
+    <div
+      class="absolute left-0 top-0 w-full h-full -z-20 opacity-0 transition-opacity pointer-events-none backdrop-blur-md
+      [-webkit-mask-image:linear-gradient(#000_55%,#000C_75%,#0000_100%)]
+      {scrollPosition && 'opacity-100'}"
     />
-  {/if}
+    <div class="flex justify-between items-center text-white">
+      <a href="/">
+        <img src="favicon.svg" alt="logo" class="w-36" />
+      </a>
+      <div class="md:hidden">
+        <Menu on:toggle={toggleMenu} />
+      </div>
+    </div>
 
-  <nav
-    class="flex flex-col gap-4 justify-center items-center md:flex-row lg:gap-8 transition-in animate-fade
-    {isMenuOpen === false && 'hidden text-transparent'}"
-  >
-    {#each links as { label, to }}
-      <Link
-        {to}
-        text={label}
-        class="font-serif text-5xl font-extrabold small-caps text-center md:text-3xl"
-      />
-    {/each}
-  </nav>
+    <nav
+      class="flex flex-col gap-4 justify-center items-center md:flex-row lg:gap-8 max-sm:animate-fade
+      {isMenuOpen || 'max-sm:hidden max-sm:text-transparent'}"
+    >
+      {#each links as { label, to }}
+        <Link
+          {to}
+          text={label}
+          class="font-serif text-5xl font-extrabold small-caps text-center md:text-3xl"
+        />
+      {/each}
+    </nav>
 
-  <footer
-    class="flex gap-2 justify-center items-center flex-wrap transition-all animate-fade
-    {isMenuOpen === false && 'hidden text-transparent'}"
-  >
-    <ToggleThemeMode />
-    <ToggleLenguage />
-    <p class="text-sm text-center py-2 md:hidden">
-      ©2023 by Alan Valencia. ALL RIGHTS RESERVED.
-    </p>
-  </footer>
+    <footer
+      class="max-sm:animate-fade
+      {isMenuOpen || 'max-sm:hidden max-sm:text-transparent'}"
+    >
+      <div class="flex justify-center items-center gap-2 pb-2">
+        <ToggleThemeMode />
+        <ToggleLenguage />
+      </div>
+      <p class="text-sm text-center py-2 md:hidden">
+        ©{currentYear} by Alan Valencia.
+      </p>
+    </footer>
+  </section>
 </header>
-
-<style>
-  .transition-in {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-duration: 0.5s;
-  }
-
-  .transition-out {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(1, 0.2, 0, 0.4);
-    transition-duration: 0.5s;
-  }
-
-  .animate-fade {
-    animation: fade 1s ease-in-out;
-  }
-
-  @keyframes fade {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0px);
-    }
-  }
-</style>

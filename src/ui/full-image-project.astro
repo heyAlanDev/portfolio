@@ -20,9 +20,13 @@ const [image] = images
 <section
   class=`bg-teal-400 grid gap-4 grid-cols-2 p-6 md:gap-8 lg:grid-cols-6 lg:p-12 xl:gap-8 xl:px-16 xl:py-12 ${className}`
 >
-  <span class="uppercase col-span-2 lg:text-lg lg:col-start-2">Estado • Industria</span>
+  <span class="uppercase col-span-2 lg:text-lg lg:col-start-2"
+    >Estado • Industria</span
+  >
 
-  <picture class="bg-gray-300 col-span-full -mx-6 lg:-mx-12 xl:-mx-16 max-h-[1200px]">
+  <picture
+    class="bg-gray-300 col-span-full -mx-6 lg:-mx-12 xl:-mx-16 max-h-[1200px]"
+  >
     <img
       src={image.imgUrl}
       alt={image.alt}
@@ -38,11 +42,7 @@ const [image] = images
     <div class="flex flex-wrap gap-4 pt-6" slot="techs">
       {
         tecnologies.map(tecnology => (
-          <Icon
-            name={tecnology}
-            size="2.5rem"
-            class="xl:w-14 xl:h-14"
-          />
+          <Icon name={tecnology} size="2.5rem" class="xl:w-14 xl:h-14" />
         ))
       }
     </div>

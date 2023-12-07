@@ -1,19 +1,47 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import Icon from './icon.svelte'
 
   const size = '2rem'
-  let isGray = false
+  const storageName = 'theme'
 
-  const toggleBackground = (): boolean => (isGray = !isGray)
+  let theme: string
+
+  onMount(() => {
+    updateTheme()
+  })
+
+  const toggleBackground = (): void => {
+    theme === 'colorful'
+      ? localStorage.setItem(storageName, 'no-color')
+      : localStorage.setItem(storageName, 'colorful')
+
+    updateTheme()
+  }
+
+  const updateTheme = (): void => {
+    theme = localStorage.getItem(storageName) ?? ''
+
+    if (
+      theme === 'colorful' ||
+      (theme === '' &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.remove('dark')
+      return
+    }
+    document.documentElement.classList.add('dark')
+  }
 </script>
 
 <button
-  class="box rounded-full transition-colors duration-300 ease-in-out w-max h-max p-2 shadow-md {isGray
-    ? 'bg-gradient-to-b from-gray-900 to-gray-600 text-white shadow-slate-200'
-    : 'bg-gradient-to-tl from-green-300 via-yellow-300 to-pink-300 shadow-slate-500'}"
+  class="rounded-full w-max h-max p-2 shadow-md
+  bg-gradient-to-b from-gray-900 to-gray-600 text-white
+  dark:bg-gradient-to-tl dark:from-green-300 dark:via-yellow-300 dark:to-pink-300"
   on:click={toggleBackground}
+  aria-label='Dark Mode Toggle'
 >
-  <div class="grid">
-    <Icon class="place-content-center" {size} name="color-mode" />
+  <div class="grid place-content-center">
+    <Icon {size} name="color-mode" />
   </div>
 </button>

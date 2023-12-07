@@ -4,17 +4,15 @@ import Link from '@components/link.svelte'
 interface Props {
   text: string
   as: 'link' | 'button'
-  responsive: boolean
-  textHoverColor: string
-  className: string
+  className?: string
+  disabled?: boolean
 }
 
 const {
   text = 'Hire me',
-  textHoverColor = '#D2B48C',
   as = 'button',
-  responsive = false,
   className,
+  disabled,
   ...rest
 } = Astro.props
 ---
@@ -22,18 +20,17 @@ const {
 <Link
   class={className}
   {text}
+  {disabled}
   {as}
-  {responsive}
   {rest}
-  {textHoverColor}
-  to="#contact"
+  to="#contact-form"
 />
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const $contactMeLinks = document.querySelectorAll('[href="#contact"]')
+    const $contactMeLinks = document.querySelectorAll('[href="#contact-form"]')
     const $firstInput = document.querySelector(
-      '#contact input#name'
+      '#contact-form input#name'
     ) as HTMLInputElement
 
     if ($contactMeLinks === null) return
