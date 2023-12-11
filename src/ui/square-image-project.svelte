@@ -79,7 +79,7 @@
 
   <Link
     {to}
-    textHoverColor="transparent"
+    as="no-animate"
     class="justify-self-end self-center col-end-[-1] lg:row-start-[-1] lg:col-start-6"
   >
     <Icon

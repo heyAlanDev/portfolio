@@ -19,9 +19,14 @@ const githubUrl = SOCIAL_MEDIA.find(social => social.name === 'github')
 <SquareImageProject />
 <SquareImageProject imgPosition="left" class="!bg-red-400" />
 
-<Link to={githubUrl?.url} target="_blank" class="!text-pink-300">
+<Link
+  to={githubUrl?.url}
+  target="_blank"
+  as="no-animate"
+  class="!text-pink-300"
+>
   <DetailedTitle
-    class="!text-current lg:!whitespace-nowrap"
+    class="!text-current"
     title="See \nMore"
     direction="horizontal"
   />

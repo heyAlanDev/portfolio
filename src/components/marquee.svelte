@@ -25,7 +25,7 @@
   </div>
 </article>
 
-<style>
+<style lang="postcss">
   article > div::after,
   article > div::before {
     @apply absolute top-0 w-1/12 h-full content-[""] z-10;

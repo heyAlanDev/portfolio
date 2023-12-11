@@ -4,22 +4,24 @@
   export let to: string
   export let disabled: boolean = false
   export let text: string | null = null
-  export let as: 'button' | 'link' = 'link'
+  export let as: 'button' | 'link' | 'no-animate' = 'link'
   export let target: HTMLAttributeAnchorTarget = '_self'
+
+  const { class: className, ...restProps } = $$restProps
 </script>
 
 <a
-  id={$$props.id}
   href={to}
   class="capitalize select-none cursor-pointer group
     {disabled && 'opacity-40 pointer-events-none'}
+    {as === 'no-animate' && 'hover:underline active:underline'}
     {as === 'link' && 'overflow-hidden relative inline-block'}
     {as === 'button' &&
     'px-6 py-3 text-center font-bold rounded-full border-2 border-current hover:bg-black-400 hover:border-black-400 dark:hover:text-black-500 dark:active:text-black-500'}
-    {$$props.class}"
+    {className}"
   {target}
   referrerpolicy={target === '_blank' ? 'no-referrer' : null}
-  data-text={text}
+  {restProps}
 >
   {#if as === 'link'}
     <span

@@ -6,6 +6,7 @@ import { currentYear as year } from '@utils/date'
 ---
 
 <footer
+  id="contact"
   class="p-8 text-2xl bg-blue-400 grid gap-16 md:py-16 md:px-14 lg:py-20 lg:grid-cols-2 lg:gap-32 xl:pt-32 xl:text-3xl"
 >
   <p class="font-medium">
@@ -30,7 +31,7 @@ import { currentYear as year } from '@utils/date'
       {
         SOCIAL_MEDIA.map(({ name, url }) => (
           <li class="font-serif font-bold">
-            <Link to={url} target="_blank" textHoverColor="white" text={name} />
+            <Link to={url} target="_blank" text={name} />
           </li>
         ))
       }

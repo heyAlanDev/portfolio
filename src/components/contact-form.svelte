@@ -130,7 +130,7 @@
   />
 </form>
 
-<style>
+<style lang="postcss">
   fieldset {
     @apply flex flex-col-reverse;
   }

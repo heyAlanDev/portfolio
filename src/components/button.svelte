@@ -1,11 +1,14 @@
 <script lang="ts">
   export let text = 'Button'
-  export let disabled = false
+  export let disabled = true
+
+  const { class: className, ...restProps } = $$restProps
 </script>
 
 <button
-  class="px-12 py-4 font-semibold text-2xl rounded-full border-2 border-[#0e1716] w-full bg-[#0e1716] active:bg-stone-700 active:border-stone-700 hover:bg-stone-700 hover:border-stone-700 disabled:opacity-50 {$$props.class}"
+  class="px-12 py-4 font-semibold text-2xl rounded-full border-2 border-black-400 w-full bg-black-400 dark:bg-slate-100 dark:border-slate-100 active:bg-stone-700 active:border-stone-700 hover:bg-stone-700 hover:border-stone-700 disabled:opacity-50 {className}"
   {disabled}
+  {restProps}
 >
   {text}
 </button>
