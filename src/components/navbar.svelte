@@ -1,31 +1,30 @@
 <script lang="ts">
-  import ToggleThemeMode from './toggle-theme-mode.svelte'
-  import ToggleLenguage from './toggle-language.svelte'
   import links from '@lib/page-navigation-links.json'
-  import Menu from './menu.svelte'
-  import Link from './link.svelte'
-  import { onMount } from 'svelte'
   import { currentYear } from '@utils/date'
+  import { onMount } from 'svelte'
+  import Link from './link.svelte'
+  import Menu from './menu.svelte'
+  import ToggleLenguage from './toggle-language.svelte'
+  import ToggleThemeMode from './toggle-theme-mode.svelte'
 
   let isMenuOpen: boolean
-  let scrollPosition: boolean
 
-  const toggleMenu = (e: Event): void => {
-    isMenuOpen = (e as CustomEvent).detail.isMenuOpen
+  const toggleMenuState = (e: Event): void => {
+    isMenuOpen = !isMenuOpen
     document.body.classList.toggle('overflow-hidden')
   }
 
   onMount(() => {
-    scrollPosition = window.scrollY > 100
+    const $mediaListener = window.matchMedia('(min-width: 768px)')
+    const $links = document.querySelectorAll('nav a')
 
-    window.onscroll = function () {
-      scrollPosition = window.scrollY > 100
-    }
+    isMenuOpen = $mediaListener.matches
 
-    const mediaListener = window.matchMedia('(min-width: 768px)')
-    isMenuOpen = mediaListener.matches
+    $links.forEach($link => {
+      $link.addEventListener('click', toggleMenuState)
+    })
 
-    mediaListener.addEventListener('change', e => {
+    $mediaListener.addEventListener('change', e => {
       if (e.matches) return (isMenuOpen = true)
       return (isMenuOpen = false)
     })
@@ -33,25 +32,24 @@
 </script>
 
 <header
-  class=" bg-brown-500 dark:bg-transparent sticky left-0 top-0 w-full z-40 overflow-hidden 
+  class="sticky top-0 w-full z-40 pt-2 overflow-hidden bg-brown-500 dark:bg-transparent animate-[navbar-colors_both_ease-in-out] [animation-timeline:scroll(root_block)] [animation-range:0_113px]
   {isMenuOpen && 'max-sm:h-screen max-sm:pb-4'}
-  {scrollPosition && 'bg-transparent'}
   {$$props.class}"
 >
   <section
-    class="w-full h-full max-w-screen-xxl flex flex-col justify-between z-50 content-center m-auto  relative translate-y-4 transition-transform md:items-start md:flex-row px-4 pt-6 md:px-6 md:pb-0 lg:px-12 {scrollPosition && '!translate-y-0'}"
+    class="w-full h-full max-w-screen-xxl flex flex-col justify-between content-center m-auto relative md:items-start md:flex-row px-4 py-4 md:px-6 lg:px-12"
   >
     <div
-      class="absolute left-0 top-0 w-full h-full -z-20 opacity-0 transition-opacity pointer-events-none backdrop-blur-md
-      [-webkit-mask-image:linear-gradient(#000_55%,#000C_75%,#0000_100%)]
-      {scrollPosition && 'opacity-100'}"
+      class="absolute left-0 top-0 w-full h-full -z-20 animate-[opacity_both_ease-in-out] [animation-timeline:scroll(root_block)] [animation-range:0_113px] pointer-events-none backdrop-blur-md
+      [-webkit-mask-image:linear-gradient(#000_55%,#000C_75%,#0000_100%)]"
     />
     <div class="flex justify-between items-center text-white">
-      <a href="/">
+      <a href="/" class="z-20">
         <img src="favicon.svg" alt="logo" class="w-36" />
       </a>
+
       <div class="md:hidden">
-        <Menu on:toggle={toggleMenu} />
+        <Menu {toggleMenuState} {isMenuOpen} />
       </div>
     </div>
 

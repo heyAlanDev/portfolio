@@ -7,8 +7,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['"Archivo Variable"', ...defaultTheme.fontFamily.sans],
-        serif: ['"Crimson Pro Variable"', ...defaultTheme.fontFamily.serif]
+        sans: ["'Archivo Variable'", ...defaultTheme.fontFamily.sans],
+        serif: ["'Crimson Pro Variable'", ...defaultTheme.fontFamily.serif]
       },
 
       colors: {
@@ -63,7 +63,17 @@ module.exports = {
           },
           to: {
             opacity: '1',
-            transform: 'translateY(0px)'
+            transform: 'translateY(0)'
+          }
+        },
+        opacity: {
+          from: { opacity: 0 },
+          to: { opacity: 1 }
+        },
+        'navbar-colors': {
+          to: {
+            background: 'transparent',
+            'padding-top': '0'
           }
         }
       }
