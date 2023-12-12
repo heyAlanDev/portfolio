@@ -30,22 +30,22 @@
       {text ?? ''}
       <slot />
     </span>
-  {/if}
 
-  <span
-    class="text-current {as === 'link' &&
-      'inline-block transition-transform group-hover:[transform:translate3d(0,-200%,0)] group-active:[transform:translate3d(0,-200%,0)]'}"
-  >
-    {text ?? ''}
-    <slot />
-  </span>
+    <span
+      class="text-current inline-block transition-transform group-hover:[transform:translate3d(0,-200%,0)] group-active:[transform:translate3d(0,-200%,0)]"
+    >
+      {text ?? ''}
+      <slot />
+    </span>
 
-  {#if as === 'link'}
     <span
       class="absolute h-full text-current top-0 left-0 w-full transition-transform [transform-origin:_100%_50%] [transform:translate3d(0,200%,0)] group-hover:[transform:translate3d(0,0,0)] group-hover:underline group-active:[transform:translate3d(0,0,0)] group-active:underline"
     >
       {text ?? ''}
       <slot />
     </span>
+  {:else}
+    {text ?? ''}
+    <slot />
   {/if}
 </a>
