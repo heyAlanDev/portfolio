@@ -5,6 +5,7 @@ import { chunkArray } from '@utils/array'
 import type { TechTool } from '@lib/techs-tools'
 import { all as TECHS_TOOLS } from '@lib/tech-tools.json'
 import TechToolComponent from './tech-tool.astro'
+import Container from '@ui/container.svelte'
 
 const techToolsChunks = chunkArray(
   TECHS_TOOLS as TechTool[],
@@ -13,18 +14,28 @@ const techToolsChunks = chunkArray(
 const [firstChunk, secondChunk] = techToolsChunks
 ---
 
-<section class="flex flex-col py-16 gap-12 text-blue-500">
-  <DetailedTitle
-    title="Tech and \nTools"
-    class="!p-8 !pb-0 !max-h-min !text-current !aspect-auto"
-  />
+<Container class="dark:from-blue-500">
+  <section class="flex flex-col py-16 gap-12 text-blue-500">
+    <DetailedTitle
+      title="Tech and \nTools"
+      class="!p-8 !pb-0 !max-h-min !text-current !aspect-auto"
+    />
 
-  <article class="flex flex-col gap-6 text-blue-400">
-    <Marquee bgColor="#141214" time="regular">
-      {firstChunk.map(({ icon, text }) => <TechToolComponent {icon} {text} />)}
-    </Marquee>
-    <Marquee bgColor="#141214" time="regular" reverse>
-      {secondChunk.map(({ icon, text }) => <TechToolComponent {icon} {text} />)}
-    </Marquee>
-  </article>
-</section>
+    <article class="flex flex-col gap-6 text-blue-400">
+      <Marquee class="from-black-400" time="regular">
+        {
+          firstChunk.map(({ icon, text }) => (
+            <TechToolComponent {icon} {text} />
+          ))
+        }
+      </Marquee>
+      <Marquee class="from-black-400" time="regular" reverse>
+        {
+          secondChunk.map(({ icon, text }) => (
+            <TechToolComponent {icon} {text} />
+          ))
+        }
+      </Marquee>
+    </article>
+  </section>
+</Container>
