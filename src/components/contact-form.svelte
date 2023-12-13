@@ -100,7 +100,7 @@
       type="checkbox"
       name="terms-conditions"
       id="terms-conditions"
-      class="appearance-none border-2 border-current w-8 h-8 aspect-square relative after:absolute after:left-1/2 after:top-[45%] checked:bg-current checked:after:content-[''] checked:after:border-blue-400 checked:after:border-r-4 checked:after:border-b-4 checked:after:rotate-45 checked:after:w-2/5 checked:after:h-4/5 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
+      class="appearance-none border-2 border-current w-8 h-8 aspect-square relative after:absolute after:left-1/2 after:top-[45%] checked:bg-current checked:after:content-[''] checked:after:border-green-400 checked:after:border-r-4 checked:after:border-b-4 checked:after:rotate-45 checked:after:w-2/5 checked:after:h-4/5 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
       required
     />
   </fieldset>
@@ -125,7 +125,7 @@
   </div>
   <Button
     text="Ten tu abrazo Alan"
-    class="text-blue-400 uppercase !text-xl !px-6"
+    class="text-green-400 dark:text-black-400 dark:bg-green-400 dark:border-green-400 dark:hover:border-green-600 dark:hover:bg-green-600 dark:active:border-green-600 dark:active:bg-green-600 uppercase !text-xl !px-6"
     disabled={status === 'pending...' || status === 'finish'}
   />
 </form>
