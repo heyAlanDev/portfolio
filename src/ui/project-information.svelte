@@ -15,15 +15,12 @@
     { forWhat: 'case', link: '#top', target: '_self' },
     { forWhat: 'demo', link: '#top', target: '_blank' }
   ]
-  export let color = 'yellow-400'
-
-  const hoverColor = `hover:text-${color}`
 </script>
 
-<article class="flex flex-col gap-6 bg-inherit {$$props.class}">
+<article class="flex flex-col gap-6 {$$props.class}">
   <div>
     <h2
-      class="text-4xl/10 tracking-widest text-left text font-bold font-serif xl:text-5xl/10"
+      class="text-black-500 dark:text-current text-4xl/10 tracking-widest text-left text font-bold font-serif xl:text-5xl/10"
     >
       {title}
     </h2>
@@ -32,7 +29,8 @@
       {#each interestLinks as { link: to, target, forWhat }}
         <Link
           text="view {forWhat}"
-          class="!py-2 !px-4 xl:text-lg {hoverColor}"
+          data-text="view {forWhat}"
+          class="!py-2 !px-4 xl:text-lg text-black-500 dark:text-slate-100 dark:border-current hover:text-current active:text-current dark:hover:text-current dark:active:text-current dark:hover:bg-current dark:active:bg-current dark:relative dark:after:absolute dark:hover:after:left-0 dark:hover:after:right-0 dark:after:text-black-400 dark:hover:after:content-[attr(data-text)] dark:active:after:content-[attr(data-text)]"
           as="button"
           {target}
           {to}
@@ -41,9 +39,9 @@
     </div>
   </div>
 
-  <div class="bg-inherit">
+  <div>
     <p
-      class="bg-inherit text-lg font-normal tracking-wide min-h-[80px] overflow-hidden text-ellipsis line-clamp-3 xl:text-2xl"
+      class="text-black-500 dark:text-slate-100 text-lg font-normal tracking-wide min-h-[80px] overflow-hidden text-ellipsis line-clamp-3 xl:text-2xl"
     >
       {text}
     </p>

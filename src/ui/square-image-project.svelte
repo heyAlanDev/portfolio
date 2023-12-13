@@ -21,10 +21,10 @@
 </script>
 
 <section
-  class="bg-amber-400 grid gap-4 grid-cols-2 p-6 md:gap-8 lg:grid-cols-6 lg:grid-rows-2 lg:px-12 lg:py-10 xl:gap-8 xl:px-16 xl:py-12 {$$props.class}"
+  class="grid gap-4 grid-cols-2 p-6 md:gap-8 lg:grid-cols-6 lg:grid-rows-2 lg:px-12 lg:py-10 xl:gap-8 xl:px-16 xl:py-12 {$$props.class}"
 >
   <span
-    class="uppercase col-span-2 lg:col-span-3 lg:col-start-1 lg:row-start-[-1] lg:text-lg"
+    class="text-black-500 dark:text-slate-100 uppercase col-span-2 lg:col-span-3 lg:col-start-1 lg:row-start-[-1] lg:text-lg"
   >
     Estado • Industria
   </span>
@@ -53,7 +53,7 @@
       <img
         src={imgUrl}
         {alt}
-        class="object-cover w-full bg-blue-400 aspect-square
+        class="object-cover w-full aspect-square
         {i === 1 && '!aspect-[16/10]'}"
       />
     </picture>
@@ -64,7 +64,7 @@
     text="Our animation video about our own animation process for those who can handle some video-splaining."
     class="col-span-2 lg:col-span-3 lg:row-start-2"
   >
-    <div class="flex flex-wrap gap-4 pt-6" slot="techs">
+    <div class="flex flex-wrap gap-4 pt-6 text-black-500 dark:text-current" slot="techs">
       {#each tecnologies as tecnology}
         <Icon name={tecnology} size="2.5rem" class="xl:w-14 xl:h-14" />
       {/each}
@@ -72,7 +72,7 @@
   </ProjectInfo>
 
   <span
-    class="text-base uppercase lg:col-span-2 lg:col-start-4 lg:row-start-[-1] lg:text-lg"
+    class="text-base text-black-500 dark:text-slate-100 uppercase lg:col-span-2 lg:col-start-4 lg:row-start-[-1] lg:text-lg"
   >
     categoria
   </span>
@@ -80,7 +80,7 @@
   <Link
     {to}
     as="no-animate"
-    class="justify-self-end self-center col-end-[-1] lg:row-start-[-1] lg:col-start-6"
+    class="justify-self-end self-center col-end-[-1] lg:row-start-[-1] lg:col-start-6 text-black-500 dark:text-current"
   >
     <Icon
       name="arrow"

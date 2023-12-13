@@ -21,7 +21,7 @@
     {className}"
   {target}
   referrerpolicy={target === '_blank' ? 'no-referrer' : null}
-  {restProps}
+  {...restProps}
 >
   {#if as === 'link'}
     <span

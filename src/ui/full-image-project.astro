@@ -18,11 +18,11 @@ const [image] = images
 ---
 
 <section
-  class=`bg-teal-400 grid gap-4 grid-cols-2 p-6 md:gap-8 lg:grid-cols-6 lg:p-12 xl:gap-8 xl:px-16 xl:py-12 ${className}`
+  class=`grid gap-4 grid-cols-2 p-6 md:gap-8 lg:grid-cols-6 lg:p-12 xl:gap-8 xl:px-16 xl:py-12 ${className}`
 >
-  <span class="uppercase col-span-2 lg:text-lg lg:col-start-2"
-    >Estado • Industria</span
-  >
+  <span class="text-black-500 dark:text-slate-100 uppercase col-span-2 lg:text-lg lg:col-start-2">
+    Estado • Industria
+    </span>
 
   <picture
     class="bg-gray-300 col-span-full -mx-6 lg:-mx-12 xl:-mx-16 max-h-[1200px]"
@@ -30,7 +30,7 @@ const [image] = images
     <img
       src={image.imgUrl}
       alt={image.alt}
-      class="object-cover w-full bg-blue-400 aspect-[12/5]"
+      class="object-cover w-full aspect-[12/5]"
     />
   </picture>
 
@@ -39,7 +39,7 @@ const [image] = images
     text="Our animation video about our own animation process for those who can handle some video-splaining."
     class="col-span-2 md:justify-between lg:flex-row lg:self-start lg:gap-32 lg:col-span-5"
   >
-    <div class="flex flex-wrap gap-4 pt-6" slot="techs">
+    <div class="flex flex-wrap gap-4 pt-6 text-black-500 dark:text-current" slot="techs">
       {
         tecnologies.map(tecnology => (
           <Icon name={tecnology} size="2.5rem" class="xl:w-14 xl:h-14" />
@@ -48,14 +48,14 @@ const [image] = images
     </div>
   </ProjectInfo>
 
-  <span class="text-base uppercase lg:text-lg lg:col-start-5 lg:row-start-1">
+  <span class="text-black-500 dark:text-slate-100 text-base uppercase lg:text-lg lg:col-start-5 lg:row-start-1">
     categoria
   </span>
 
   <Link
     {to}
     as="no-animate"
-    class="justify-self-end self-center col-end-[-1] lg:self-start"
+    class="justify-self-end self-center col-end-[-1] lg:self-start text-black-500 dark:text-current"
   >
     <Icon
       name="arrow"
