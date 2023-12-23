@@ -178,6 +178,14 @@ export async function getPinnedRepos (limit = 5): Promise<FavoriteProject[]> {
       .find(({ topic }) => topic.name.split('/')[0] === 'color')
       ?.topic.name.split('/')[1]
 
+    const imgWidth = topics
+      .find(({ topic }) => topic.name.split('/')[0] === 'imgSize')
+      ?.topic.name.split('/')[1]
+
+    const imgPosition = topics
+      .find(({ topic }) => topic.name.split('/')[0] === 'imgPosition')
+      ?.topic.name.split('/')[1]
+
     const techs = techsArr.map(({ name }) => name.toLowerCase())
 
     return {
@@ -195,7 +203,9 @@ export async function getPinnedRepos (limit = 5): Promise<FavoriteProject[]> {
       status,
       category,
       industry,
-      color
+      color,
+      imgPosition,
+      imgWidth
     }
   })
 

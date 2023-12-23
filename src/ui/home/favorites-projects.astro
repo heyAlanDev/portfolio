@@ -26,11 +26,12 @@ const colors = {
 
 {
   favoriteProjects.map((project) => {
-    const { color = 'red' as keyof typeof colors } = project
+    const { imgWidth = 'full', color = 'red' as keyof typeof colors } = project
+
     return (
     <Container class={colors[color]}>
       {
-        !(project.name.length > 0)
+        imgWidth === 'square'
           ? <SquareImageProject {...project} />
           : <FullImageProject {...project} />
       }

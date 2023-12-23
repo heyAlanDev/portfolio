@@ -26,7 +26,8 @@ declare interface Project {
 declare interface LatestProject extends Project {}
 
 declare interface FavoriteProject extends Project {
-  imgPosition?: 'left' | 'right'
+  imgPosition?: string | 'left' | 'right'
+  imgWidth?: string | 'square' | 'full'
   color?: string
 }
 
