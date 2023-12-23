@@ -14,11 +14,11 @@
     "add:icon": "node ./src/utils/addIcon.cjs"
   },
   "dependencies": {
-    "@astrojs/svelte": "4.0.3",
-    "@astrojs/tailwind": "5.0.1",
-    "@fontsource-variable/archivo": "^5.0.16",
-    "@fontsource-variable/crimson-pro": "^5.0.16",
-    "astro": "3.2.3",
+    "@astrojs/svelte": "5.0.1",
+    "@astrojs/tailwind": "5.0.3",
+    "@fontsource-variable/archivo": "^5.0.17",
+    "@fontsource-variable/crimson-pro": "^5.0.17",
+    "astro": "4.0.4",
     "svelte": "4.2.1",
     "tailwindcss": "3.3.3"
   },

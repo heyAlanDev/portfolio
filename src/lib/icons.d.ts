@@ -1,10 +1,10 @@
 import type icons from '@lib/icons.json'
 
-declare interface Icon {
+declare interface IconType {
   box: number
   svg: string
 }
 
 declare type IconName = keyof typeof icons
 
-export type { Icon, IconName }
+export type { IconType, IconName }

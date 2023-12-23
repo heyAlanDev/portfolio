@@ -1,14 +1,6 @@
 <script lang="ts">
-  import { createEventDispatcher } from 'svelte'
-
-  const dispatch = createEventDispatcher()
-
-  let isMenuOpen: boolean = false
-
-  const toggleMenuState = (): void => {
-    isMenuOpen = !isMenuOpen
-    dispatch('toggle', { isMenuOpen })
-  }
+  export let isMenuOpen: boolean
+  export let toggleMenuState: (e: Event) => void
 </script>
 
 <button

@@ -1,51 +1,18 @@
 ---
+import CardProject from '@components/card-project.astro'
 import Carousel from '@components/carousel.svelte'
-import Link from '@components/link.svelte'
-import Tag from '@components/tag.svelte'
+import { getLatestRepos, getUsername } from '@lib/services/github'
 
-const projects = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+const latestProjects = await getLatestRepos(20)
+const username = await getUsername()
 ---
 
 <Carousel client:load>
   {
-    projects.map(index => (
-      <div class="w-96 h-64 bg-green-500 p-4 rounded-3xl text-white relative grid place-content-center">
-        <img
-          src="favicon.svg"
-          alt=""
-          class="h-56 object-cover"
-          draggable="false"
-        />
-        <article class="flex flex-col-reverse justify-between absolute inset-0 bg-black/60 rounded-3xl p-4">
-          <div>
-            <h4 class="text-2xl capitalize font-semibold">Title {index}</h4>
-            <p class="text-base overflow-hidden whitespace-nowrap text-ellipsis">
-              Description 1 dafbdsbfldsfsdfjklsjñ, afñljasfdjladj
-              sfljdsafñldsjafjdfkdsjfldsjafñj
-            </p>
-            <div class="flex w-full gap-2 mt-4">
-              <Tag text="react" class="!bg-red-500" />
-              <Tag text="svelte" class="!bg-red-500" />
-            </div>
-          </div>
-          <div>
-            <Tag
-              class="!shadow-black/60 !bg-green-500"
-              text="finished"
-              shadow
-            />
-            <div class="flex gap-2 mt-4">
-              <Link
-                to="/"
-                text="View Demo"
-                color="white"
-                textHoverColor="green"
-                as="button"
-              />
-            </div>
-          </div>
-        </article>
-      </div>
+    latestProjects.map((project) => !(project.name === 'portfolio' || project.name === username) && (
+      <CardProject
+        {...project}
+      />
     ))
   }
 </Carousel>

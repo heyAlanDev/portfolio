@@ -40,7 +40,7 @@
   })
 </script>
 
-<article class="rounded-2xl p-4 max-w-full bg-[#BC9CE7] {$$props.class}">
+<article class="rounded-2xl p-4 max-w-full bg-purple-400 dark:bg-neutral-800 {$$props.class}">
   <header class="flex justify-between content-center mb-2">
     <h4 class="font-serif text-sm font-semibold">Habilidades blandas:</h4>
 
@@ -56,8 +56,8 @@
   <footer class="flex align-center justify-between gap-2">
     {#each softSkills as { icon, label }, i}
       <span
-        class="rounded-full aspect-square p-2 bg-[#CFB2E6] w-full max-w-[56px]"
-        class:!bg-purple-500={i === selectedSkillIndex}
+        class="rounded-full aspect-square p-2 bg-purple-300 dark:bg-neutral-500 w-full max-w-[56px]"
+        class:!bg-purple-600={i === selectedSkillIndex}
         aria-label={label}
       >
         <Icon name={icon} size="2rem" class="w-full h-full" />
