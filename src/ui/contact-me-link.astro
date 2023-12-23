@@ -1,7 +1,7 @@
 ---
 import Link from '@components/link.svelte'
 
-interface Props {
+export interface Props {
   text: string
   as: 'link' | 'button'
   className?: string
@@ -30,7 +30,7 @@ const {
   document.addEventListener('DOMContentLoaded', () => {
     const $contactMeLinks = document.querySelectorAll('[href="#contact-form"]')
     const $firstInput = document.querySelector(
-      '#contact-form input#name'
+      '#contact-form label input'
     ) as HTMLInputElement
 
     if ($contactMeLinks === null) return

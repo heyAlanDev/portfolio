@@ -70,39 +70,42 @@
   <Web3formsConfig {API_KEY} />
 
   <fieldset>
-    <input placeholder=" " type="text" name="name" id="name" required />
-    <label for="name">Name*</label>
+    <label>
+      Name*
+      <input placeholder=" " type="text" id="name" required />
+    </label>
   </fieldset>
 
   <fieldset>
-    <input placeholder=" " type="email" name="email" id="email" required />
-    <label for="email">Email*</label>
+    <label>
+      Email*
+      <input placeholder=" " type="email" name="email" id="email" required />
+    </label>
   </fieldset>
 
   <fieldset>
-    <textarea
-      name="message"
-      id="message"
-      class="min-h-[2rem] h-8 overflow-hidden"
-      style:height={`${textareaHeight}px`}
-      on:input={resizeTextarea}
-      required
-    />
-    <label for="message">Message*</label>
+    <label>
+      Message*
+      <textarea
+        name="message"
+        class="min-h-[2rem] h-8 overflow-hidden"
+        style:height={`${textareaHeight}px`}
+        on:input={resizeTextarea}
+        required
+      />
+    </label>
   </fieldset>
 
-  <fieldset class="!flex-row-reverse gap-4 self-start">
-    <label for="terms-conditions" class="!text-base !font-normal">
+  <fieldset>
+    <label class="!text-base !font-normal inline-flex gap-4 items-center">
+      <input
+        placeholder=" "
+        type="checkbox"
+        class="appearance-none border-2 border-current w-8 h-8 aspect-square relative after:absolute after:left-1/2 after:top-[45%] checked:bg-current checked:after:content-[''] checked:after:border-green-400 checked:after:border-r-4 checked:after:border-b-4 checked:after:rotate-45 checked:after:w-2/5 checked:after:h-4/5 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 dark:checked:after:border-neutral-800"
+        required
+      />
       I agree with the storage and processing of my personal data
     </label>
-    <input
-      placeholder=" "
-      type="checkbox"
-      name="terms-conditions"
-      id="terms-conditions"
-      class="appearance-none border-2 border-current w-8 h-8 aspect-square relative after:absolute after:left-1/2 after:top-[45%] checked:bg-current checked:after:content-[''] checked:after:border-green-400 checked:after:border-r-4 checked:after:border-b-4 checked:after:rotate-45 checked:after:w-2/5 checked:after:h-4/5 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2"
-      required
-    />
   </fieldset>
 
   <div class="flex w-full gap-4 justify-end">
@@ -123,6 +126,7 @@
       />
     {/if}
   </div>
+
   <Button
     text="Ten tu abrazo Alan"
     class="text-green-400 dark:text-black-400 dark:bg-green-400 dark:border-green-400 dark:hover:border-green-600 dark:hover:bg-green-600 dark:active:border-green-600 dark:active:bg-green-600 uppercase !text-xl !px-6"
@@ -143,9 +147,21 @@
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
-  input:-webkit-autofill:active {
+  input:-webkit-autofill:active,
+  input:-internal-autofill-selected {
     transition: background-color 5000s;
-    -webkit-text-fill-color: currentColor !important;
+    -webkit-text-fill-color: theme('colors.black.500') !important;
+    border-color: theme('colors.black.500') !important;
+  }
+
+  :is(.dark input:-webkit-autofill),
+  :is(.dark input:-webkit-autofill:hover),
+  :is(.dark input:-webkit-autofill:focus),
+  :is(.dark input:-webkit-autofill:active),
+  :is(.dark input:-internal-autofill-selected) {
+    transition: background-color 5000s;
+    -webkit-text-fill-color: theme('colors.slate.200') !important;
+    border-color: theme('colors.slate.200') !important;
   }
 
   label {
@@ -154,16 +170,15 @@
 
   input:focus,
   textarea:focus {
-    @apply outline-none;
+    @apply outline-1;
   }
 
   fieldset:valid label,
-  input:focus ~ label,
-  textarea:focus ~ label {
-    @apply text-sm font-normal m-0;
+  label:focus {
+    @apply text-sm font-normal;
   }
 
-  input:not(:placeholder-shown):invalid ~ label {
-    @apply font-normal m-0;
+  label:not(:placeholder-shown):invalid {
+    @apply font-normal;
   }
 </style>

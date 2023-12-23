@@ -8,7 +8,6 @@ import Container from '@ui/container.svelte';
 
 <footer
   id="contact"
-  
 >
   <Container class=" from-green-400 to-green-400">
     <section class="grid gap-16 p-8 text-2xl md:py-16 md:px-14 lg:py-20 lg:grid-cols-2 lg:gap-32 xl:pt-32 xl:text-3xl">
@@ -21,10 +20,13 @@ import Container from '@ui/container.svelte';
     >
       {'contacto@\nalanvalencia.me'}
     </Link>
+
     <p class="font-medium">
       O aqui, se que esto va a ser el comienzo de algo increible
     </p>
+
     <ContactForm API_KEY={import.meta.env.WEB3FORMS_API_KEY} client:load />
+
     <p class="font-medium">Sigueme en</p>
     <article class="flex flex-col lg:flex-row justify-between">
       <ul>
