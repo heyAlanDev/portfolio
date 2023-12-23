@@ -1,59 +1,69 @@
 ---
 import Icon from '@components/icon.svelte'
 import Link from '@components/link.svelte'
+import type { FavoriteProject } from '@lib/projects'
+import ProjectImage from './project-image.astro'
 import ProjectInfo from './project-information.svelte'
-import type { IconName } from '@lib/icons'
-import type { Image } from '@lib/projects'
 
-interface Props {
-  tecnologies: IconName[]
-  images: [Image]
-  class: string
-  to?: string
+interface Props extends FavoriteProject {
+  class?: string
 }
 
-const { tecnologies, images, class: className, to = '#top' } = Astro.props
+const {
+  techs,
+  status,
+  category,
+  name,
+  description,
+  links,
+  industry,
+  class: className
+} = Astro.props
 
-const [image] = images
+const demoLink = links?.find(link => link.type === 'demo')?.link
 ---
 
 <section
   class=`grid gap-4 grid-cols-2 p-6 md:gap-8 lg:grid-cols-6 lg:p-12 xl:gap-8 xl:px-16 xl:py-12 ${className}`
 >
-  <span class="text-black-500 dark:text-slate-100 uppercase col-span-2 lg:text-lg lg:col-start-2">
-    Estado • Industria
-    </span>
-
-  <picture
-    class="bg-gray-300 col-span-full -mx-6 lg:-mx-12 xl:-mx-16 max-h-[1200px]"
+  <span
+    class="text-black-500 dark:text-slate-100 uppercase col-span-2 lg:text-lg lg:col-start-2"
   >
-    <img
-      src={image.imgUrl}
-      alt={image.alt}
-      class="object-cover w-full aspect-[12/5]"
-    />
-  </picture>
+    {status} • {industry}
+  </span>
+
+  <ProjectImage
+    {name}
+    className="col-span-full -mx-6 lg:-mx-12 xl:-mx-16"
+    imgClass="aspect-[12/5]"
+  />
 
   <ProjectInfo
-    title="Titulo"
-    text="Our animation video about our own animation process for those who can handle some video-splaining."
+    {name}
+    {description}
+    {links}
     class="col-span-2 md:justify-between lg:flex-row lg:self-start lg:gap-32 lg:col-span-5"
   >
-    <div class="flex flex-wrap gap-4 pt-6 text-black-500 dark:text-current" slot="techs">
+    <div
+      class="flex flex-wrap gap-4 pt-6 text-black-500 dark:text-current"
+      slot="techs"
+    >
       {
-        tecnologies.map(tecnology => (
+        techs.map(tecnology => (
           <Icon name={tecnology} size="2.5rem" class="xl:w-14 xl:h-14" />
         ))
       }
     </div>
   </ProjectInfo>
 
-  <span class="text-black-500 dark:text-slate-100 text-base uppercase lg:text-lg lg:col-start-5 lg:row-start-1">
-    categoria
+  <span
+    class="text-black-500 dark:text-slate-100 text-base uppercase lg:text-lg lg:col-start-5 lg:row-start-1"
+  >
+    {category}
   </span>
 
   <Link
-    {to}
+    to={demoLink ?? ''}
     as="no-animate"
     class="justify-self-end self-center col-end-[-1] lg:self-start text-black-500 dark:text-current"
   >

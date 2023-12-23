@@ -1,0 +1,20 @@
+---
+import { getImage } from '@lib/services/cloudinary'
+export interface Props {
+  name: string
+  imgClass?: string
+  className?: string | Record<string, boolean> | Record<any, any> | Iterable<string> | Iterable<any> | string
+}
+
+const { name, className, imgClass } = Astro.props
+
+const [image = { imgUrl: 'favicon.svg', imgAlt: 'Personal brand logo for Alan Valencia' }] = await getImage(name)
+---
+
+<picture class:list={['bg-gray-300 max-h-[1200px]', className]} >
+  <img
+    src={image.imgUrl}
+    alt={image.imgAlt}
+    class:list={['object-cover w-full', imgClass]}
+  />
+</picture>

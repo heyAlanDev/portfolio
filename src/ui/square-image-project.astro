@@ -1,0 +1,106 @@
+---
+import Icon from '@components/icon.svelte'
+import Link from '@components/link.svelte'
+import ProjectInfo from './project-information.svelte'
+import type { FavoriteProject } from '@lib/projects'
+import ProjectImage from './project-image.astro'
+
+export interface Props extends FavoriteProject {
+  class?: string
+}
+
+const {
+  techs,
+  status,
+  category,
+  name,
+  description,
+  links,
+  industry,
+  imgPosition = 'left',
+  class: className
+} = Astro.props
+
+const demoLink = links?.find(link => link.type === 'demo')?.link
+---
+
+<section
+  class:list={[
+    'grid gap-4 grid-cols-2 p-6 md:gap-8 lg:grid-cols-6 lg:grid-rows-2 lg:px-12 lg:py-10 xl:gap-8 xl:px-16 xl:py-12',
+    className
+  ]}
+>
+  <span
+    class="text-black-500 dark:text-slate-100 uppercase col-span-2 lg:col-span-3 lg:col-start-1 lg:row-start-[-1] lg:text-lg"
+  >
+    {status} • {industry}
+  </span>
+
+  <ProjectImage
+    name={`${name}-1`}
+    className={[
+      'col-span-2 self-center lg:col-span-3 lg:row-span-3',
+      {
+        '-mr-6 lg:-mr-12 xl:-mr-16  lg:col-start-4 lg:row-start-1':
+          imgPosition === 'right'
+      },
+      {
+        '-ml-6 lg:-ml-12 xl:-ml-16  lg:col-start-1 lg:row-start-1':
+          imgPosition === 'left'
+      }
+    ]}
+    imgClass="aspect-square"
+  />
+
+  <ProjectImage
+    name={`${name}-2`}
+    className={[
+      'hidden lg:block lg:col-span-3',
+      {
+        '-ml-6 lg:-ml-12 xl:-ml-16 lg:col-start-1 lg:row-start-1':
+          imgPosition === 'right'
+      },
+      {
+        '-mr-6 lg:-mr-12 xl:-mr-16 lg:col-start-4 lg:row-start-1':
+          imgPosition === 'left'
+      }
+    ]}
+    imgClass="aspect-[16/10"
+  />
+
+  <ProjectInfo
+    {name}
+    {description}
+    {links}
+    class="col-span-2 lg:col-span-3 lg:row-start-2"
+  >
+    <div
+      class="flex flex-wrap gap-4 pt-6 text-black-500 dark:text-current"
+      slot="techs"
+    >
+      {
+        techs.map(tech => (
+          <Icon name={tech} size="2.5rem" class="xl:w-14 xl:h-14" />
+        ))
+      }
+    </div>
+  </ProjectInfo>
+
+  <span
+    class="text-base text-black-500 dark:text-slate-100 uppercase lg:col-span-2 lg:col-start-4 lg:row-start-[-1] lg:text-lg"
+  >
+    {category}
+  </span>
+
+  <Link
+    to={demoLink ?? ''}
+    as="no-animate"
+    class="justify-self-end self-center col-end-[-1] lg:row-start-[-1] lg:col-start-6 text-black-500 dark:text-current"
+  >
+    <Icon
+      name="arrow"
+      size="2rem"
+      class="xl:w-12 xl:h-12 motion-reduce:animate-bounce-left"
+    />
+  </Link>
+</section>

@@ -1,0 +1,87 @@
+---
+import type { LatestProject } from '@lib/projects'
+import Icon from './icon.svelte'
+import Link from './link.svelte'
+import { getImage } from '@lib/services/cloudinary'
+
+interface Props extends LatestProject {
+  className?: string
+}
+
+const {
+  name,
+  techs,
+  links,
+  status = 'Completed',
+  description,
+  className
+} = Astro.props
+
+const nameToRender = name.toLowerCase().split('-').join(' ')
+
+const [
+  image = {
+    imgAlt: 'Personal brand logo for Alan Valencia',
+    imgUrl: 'favicon.svg'
+  }
+] = await getImage(name)
+---
+
+<article
+  class:list={[
+    'w-96 h-64 p-4 rounded-3xl text-white bg-indigo-400 relative grid place-content-center',
+    className
+  ]}
+>
+  <img
+    src={image?.imgUrl}
+    alt={image?.imgAlt}
+    class="object-cover object-center w-full h-full absolute inset-0 rounded-3xl"
+    draggable="false"
+  />
+  <article
+    class="flex flex-col-reverse justify-between absolute inset-0 bg-black/60 rounded-3xl p-4"
+  >
+    <div>
+      <h3 class="text-2xl capitalize font-semibold">{nameToRender}</h3>
+      <p class="text-base overflow-hidden whitespace-nowrap text-ellipsis">
+        {description}
+      </p>
+      <div class="flex w-full gap-2 pt-2">
+        {techs?.map(tech => <Icon name={tech} size="2.5rem" />)}
+      </div>
+    </div>
+    <div>
+      <span
+        class:list={[
+          'rounded-3xl font-medium text-sm py-1 px-3 max-w-fit shadow-lg capitalize text-white bg-brown-500',
+          { 'bg-green-500': status === 'Completed' },
+          { 'bg-blue-500': status === 'Planning' },
+          { 'bg-yellow-500': status === 'In progress' },
+          { 'bg-violet-500': status === 'Paused' },
+          { 'bg-stone-500': status === 'Backlog' },
+          { 'bg-orange-500': status === 'On Hold' },
+          { 'bg-red-500': status === 'Cancelled' }
+        ]}
+      >
+        {status}
+      </span>
+
+      <div class="flex gap-2 mt-4">
+        {
+          links?.map(({ link, target = '_blank', type }) => (
+            <Link
+              to={link}
+              text={`view ${type}`}
+              data-text={`view ${type}`}
+              class="!py-2 !px-3 text-sm hover:text-indigo-400 active:text-indigo-400 dark:hover:text-indigo-400 dark:active:text-indigo-400"
+              as="button"
+              {target}
+              disabled={link === null || link === '' || link === undefined}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </article>
+</article>

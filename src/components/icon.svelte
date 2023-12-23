@@ -2,11 +2,11 @@
   import icons from '@lib/icons.json'
   import type { IconName } from '@lib/icons.d.ts'
 
-  export let name: IconName
+  export let name: IconName | string
   export let size: string = '1rem'
   export let color: string = 'currentColor'
 
-  const displayIcon = icons[name]
+  const displayIcon = icons[name] || icons.default
 </script>
 
 <svg

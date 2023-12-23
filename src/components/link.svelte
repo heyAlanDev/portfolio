@@ -1,7 +1,7 @@
 <script lang="ts">
   import type { HTMLAttributeAnchorTarget } from 'svelte/elements'
 
-  export let to: string
+  export let to: string | null
   export let disabled: boolean = false
   export let text: string | null = null
   export let as: 'button' | 'link' | 'no-animate' = 'link'
