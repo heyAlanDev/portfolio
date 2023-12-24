@@ -12,10 +12,21 @@ interface Props {
 const { title } = Astro.props
 ---
 
+<!-- FIXME: fix the font jump -->
+<!-- FIXME: fix the input focus animation -->
+<!-- FIXME: fix the navbar click toogle and refactor to a component island component (can usew the checked input and not a button) -->
+<!-- TODO: implemented the i118n feat to the project -->
+<!-- TODO: in aboutme section add an use the redsocials -->
+<!-- TODO: Make dropdown to resume install or make to install all in a zip -->
+<!-- TODO: implemented the experience and add info to aboutme section -->
+<!-- TODO: implemented the certifications and add info to aboutme section -->
+<!-- TODO: implemented the case studios pages integration and paths -->
+
 <!doctype html>
 <html lang="es" class="bg-black-400 font-sans">
   <head>
     <meta charset="UTF-8" />
+    <title>{title ?? 'Alan Valencia'}</title>
     <meta
       name="description"
       content="Impulso la innovación como un apasionado full-stack developer. Desde la creación de interfaces de usuario cautivadoras hasta el diseño de arquitecturas robustas en el back-end, mi enfoque integral ofrece soluciones digitales excepcionales. Explora mi portafolio para descubrir cómo puedo llevar tu proyecto al siguiente nivel. ¡Convierte tus ideas en experiencias digitales impactantes con mi experiencia en desarrollo full-stack!"
@@ -23,7 +34,6 @@ const { title } = Astro.props
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title ?? 'Alan Valencia'}</title>
     <!-- Add polyfill for animation-timeline (scroll-timeline and view-timeline) -->
     <script is:inline src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
   </head>
@@ -36,13 +46,24 @@ const { title } = Astro.props
   </body>
 </html>
 
-<style is:global>
-  :root {
-    --accent: 136, 58, 234;
-    --accent-light: 224, 204, 250;
-    --accent-dark: 49, 10, 101;
+<script>
+  const updateTheme = () => {
+    const theme = localStorage.getItem('theme') ?? ''
+
+    if (
+      theme === 'no-colorful' ||
+      (theme === '')
+    ) {
+      document.documentElement.classList.remove('dark')
+      return
+    }
+    document.documentElement.classList.add('dark')
   }
 
+  document.addEventListener('DOMContentLoaded', updateTheme)
+</script>
+
+<style is:global>
   * {
     scrollbar-width: thin;
     scrollbar-color: #212121 #bebebe;
@@ -51,26 +72,28 @@ const { title } = Astro.props
   *::-webkit-scrollbar {
     width: 0.25rem;
     height: 0.25rem;
+    transition: width 0.5s, height 0.5s ease-in-out;
   }
 
-  *::-webkit-scrollbar-track {
+  *::-webkit-scrollbar:hover {
+    width: auto;
+    height: auto;
+  }
+
+   *::-webkit-scrollbar-track {
     background: rgb(179, 177, 177);
-    border-radius: 10px;
   }
 
   *::-webkit-scrollbar-thumb {
-    background: rgb(136, 136, 136);
-    border-radius: 10px;
+    background: rgb(112, 112, 112);
   }
 
   *::-webkit-scrollbar-thumb:hover {
-    background: rgb(100, 100, 100);
-    border-radius: 10px;
+    background: rgb(70, 70, 70);
   }
 
   *::-webkit-scrollbar-thumb:active {
-    background: rgb(68, 68, 68);
-    border-radius: 10px;
+    background: rgb(40, 40, 40);
   }
 
   .small-caps {
