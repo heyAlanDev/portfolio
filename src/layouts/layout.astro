@@ -2,7 +2,8 @@
 import '@fontsource-variable/crimson-pro'
 import '@fontsource-variable/archivo'
 
-import Navbar from '@components/navbar.svelte'
+// import Navbar from '@components/navbar.svelte'
+import Navbar from '@components/navbar.astro'
 import Footer from '@components/footer.astro'
 
 interface Props {
@@ -14,10 +15,10 @@ const { title } = Astro.props
 
 <!-- FIXME: fix the font jump -->
 <!-- FIXME: fix the input focus animation -->
-<!-- FIXME: fix the navbar click toogle and refactor to a component island component (can usew the checked input and not a button) -->
 <!-- TODO: implemented the i118n feat to the project -->
 <!-- TODO: in aboutme section add an use the redsocials -->
 <!-- TODO: Make dropdown to resume install or make to install all in a zip -->
+<!-- TODO: add dropdown for install resume files -->
 <!-- TODO: implemented the experience and add info to aboutme section -->
 <!-- TODO: implemented the certifications and add info to aboutme section -->
 <!-- TODO: implemented the case studios pages integration and paths -->
@@ -38,7 +39,7 @@ const { title } = Astro.props
     <script is:inline src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
   </head>
   <body class="w-full h-full flex content-center flex-col justify-center transition-colors text-black-400 dark:text-slate-100">
-    <Navbar client:load />
+    <Navbar />
     <main>
       <slot />
     </main>
@@ -51,7 +52,7 @@ const { title } = Astro.props
     const theme = localStorage.getItem('theme') ?? ''
 
     if (
-      theme === 'no-colorful' ||
+      theme === 'color' ||
       (theme === '')
     ) {
       document.documentElement.classList.remove('dark')
