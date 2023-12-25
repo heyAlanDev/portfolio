@@ -25,17 +25,19 @@ const colors = {
 </Container>
 
 {
-  favoriteProjects.map((project) => {
+  favoriteProjects.map(project => {
     const { imgWidth = 'full', color = 'red' as keyof typeof colors } = project
 
     return (
-    <Container class={colors[color]}>
-      {
-        imgWidth === 'square'
-          ? <SquareImageProject {...project} />
-          : <FullImageProject {...project} />
-      }
-    </Container>
+      <Container class={colors[color]}>
+        {imgWidth === 'square'
+          ? (
+          <SquareImageProject {...project} />
+            )
+          : (
+          <FullImageProject {...project} />
+            )}
+      </Container>
     )
   })
 }

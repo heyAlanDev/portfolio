@@ -13,17 +13,7 @@ interface Props {
 const { title } = Astro.props
 ---
 
-<!-- FIXME: fix the font jump -->
-<!-- FIXME: fix the input focus animation -->
-<!-- TODO: implemented the i118n feat to the project -->
-<!-- TODO: in aboutme section add an use the redsocials -->
-<!-- TODO: Make dropdown to resume install or make to install all in a zip -->
-<!-- TODO: add dropdown for install resume files -->
-<!-- TODO: implemented the experience and add info to aboutme section -->
-<!-- TODO: implemented the certifications and add info to aboutme section -->
-<!-- TODO: implemented the case studios pages integration and paths -->
-
-<!doctype html>
+<!-- FIXME: fix the font jump --><!-- FIXME: fix the input focus animation --><!-- TODO: implemented the i118n feat to the project --><!-- TODO: in aboutme section add an use the redsocials --><!-- TODO: Make dropdown to resume install or make to install all in a zip --><!-- TODO: add dropdown for install resume files --><!-- TODO: implemented the experience and add info to aboutme section --><!-- TODO: implemented the certifications and add info to aboutme section --><!-- TODO: implemented the case studios pages integration and paths --><!doctype html>
 <html lang="es" class="bg-black-400 font-sans">
   <head>
     <meta charset="UTF-8" />
@@ -36,9 +26,14 @@ const { title } = Astro.props
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <!-- Add polyfill for animation-timeline (scroll-timeline and view-timeline) -->
-    <script is:inline src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
+    <script
+      is:inline
+      src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"
+    ></script>
   </head>
-  <body class="w-full h-full flex content-center flex-col justify-center transition-colors text-black-400 dark:text-slate-100">
+  <body
+    class="w-full h-full flex content-center flex-col justify-center transition-colors text-black-400 dark:text-slate-100"
+  >
     <Navbar />
     <main>
       <slot />
@@ -51,10 +46,7 @@ const { title } = Astro.props
   const updateTheme = () => {
     const theme = localStorage.getItem('theme') ?? ''
 
-    if (
-      theme === 'color' ||
-      (theme === '')
-    ) {
+    if (theme === 'color' || theme === '') {
       document.documentElement.classList.remove('dark')
       return
     }
@@ -73,7 +65,9 @@ const { title } = Astro.props
   *::-webkit-scrollbar {
     width: 0.25rem;
     height: 0.25rem;
-    transition: width 0.5s, height 0.5s ease-in-out;
+    transition:
+      width 0.5s,
+      height 0.5s ease-in-out;
   }
 
   *::-webkit-scrollbar:hover {
@@ -81,7 +75,7 @@ const { title } = Astro.props
     height: auto;
   }
 
-   *::-webkit-scrollbar-track {
+  *::-webkit-scrollbar-track {
     background: rgb(179, 177, 177);
   }
 

@@ -4,18 +4,6 @@
   let navbarElementsToToggle: NodeListOf<HTMLElement>
   let links: NodeListOf<HTMLAnchorElement>
 
-  export const toggleNavbarState = () => {
-    if (!navbarElementsToToggle) return
-
-    navbarElementsToToggle.forEach(element => {
-      const { navbar } = (element as HTMLElement).dataset
-
-      navbar === 'close'
-        ? ((element as HTMLElement).dataset.navbar = 'open')
-        : ((element as HTMLElement).dataset.navbar = 'close')
-    })
-  }
-
   onMount(() => {
     navbarElementsToToggle = document.querySelectorAll('[data-navbar]')
     navbarElementsToToggle.forEach(element => {
@@ -28,6 +16,19 @@
       link.addEventListener('click', toggleNavbarState)
     })
   })
+
+  export const toggleNavbarState = (): void => {
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    if (!navbarElementsToToggle) return
+
+    navbarElementsToToggle.forEach(element => {
+      const { navbar } = element.dataset
+
+      navbar === 'close'
+        ? (element.dataset.navbar = 'open')
+        : (element.dataset.navbar = 'close')
+    })
+  }
 </script>
 
 <button

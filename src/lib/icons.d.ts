@@ -1,9 +1,9 @@
 import type icons from '@lib/icons.json'
 
-declare interface IconType {
+type IconType = Record<string, {
   box: number
   svg: string
-}
+}>
 
 declare type IconName = keyof typeof icons
 

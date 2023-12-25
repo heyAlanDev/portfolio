@@ -1,6 +1,6 @@
 import type { Images } from '@lib/projects'
 
-export async function getImage (image: string): Promise<Images> {
+export async function getImage(image: string): Promise<Images> {
   let images: Images = []
   const imgUrl = `https://res.cloudinary.com/doyyvl6jg/image/upload/q_auto/f_webp/projects/${image}-image.png`
 

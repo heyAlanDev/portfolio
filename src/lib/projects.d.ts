@@ -33,6 +33,22 @@ declare interface FavoriteProject extends Project {
 
 declare type LinksProject = [LinkProject, LinkProject, LinkProject]
 
-declare type ProjectStatus = 'Planning' | 'In Progress' | 'Backlog' | 'Completed' | 'Cancelled' | 'Paused' | 'On Hold' | undefined
+declare type ProjectStatus =
+  | 'Planning'
+  | 'In Progress'
+  | 'Backlog'
+  | 'Completed'
+  | 'Cancelled'
+  | 'Paused'
+  | 'On Hold'
+  | undefined
 
-export type { Image, Images, LinkProject, LinksProject, ProjectStatus, LatestProject, FavoriteProject }
+export type {
+  Image,
+  Images,
+  LinkProject,
+  LinksProject,
+  ProjectStatus,
+  LatestProject,
+  FavoriteProject
+}

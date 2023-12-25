@@ -9,10 +9,11 @@ const username = await getUsername()
 
 <Carousel client:load>
   {
-    latestProjects.map((project) => !(project.name === 'portfolio' || project.name === username) && (
-      <CardProject
-        {...project}
-      />
-    ))
+    latestProjects.map(
+      project =>
+        !(project.name === 'portfolio' || project.name === username) && (
+          <CardProject {...project} />
+        )
+    )
   }
 </Carousel>
