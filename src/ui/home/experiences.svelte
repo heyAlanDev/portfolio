@@ -37,7 +37,10 @@
 </script>
 
 {#each experiences as { job, startDate, endDate, description, company }}
-  <details class="bg-purple-300 dark:bg-neutral-500 p-4 rounded-2xl my-2 group" name="experience">
+  <details
+    class="bg-purple-300 dark:bg-neutral-500 p-4 rounded-2xl my-2 group"
+    name="experience"
+  >
     <summary
       class="text-xl font-semibold font-serif capitalize flex justify-between"
     >

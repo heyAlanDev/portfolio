@@ -8,11 +8,12 @@ import SOCIAL_MEDIA from '@lib/social-media.json'
 import { more_used as MORE_USED } from '@lib/tech-tools.json'
 import ContactMeLink from '@ui/contact-me-link.astro'
 import Container from '@ui/container.svelte'
+import DownloadResumeButton from '@ui/download-resume-button.astro'
 ---
 
 <Container
   color="brown-500"
-  class="pb-24 pt-2 px-2 from-brown-500 to-brown-500 md:px-6 lg:px-10 "
+  class="pb-24 pt-4 px-2 from-brown-500 to-brown-500 md:px-6 lg:px-10"
 >
   <article class="w-auto h-full flex flex-col">
     <h1
@@ -29,7 +30,11 @@ import Container from '@ui/container.svelte'
       <div class="flex gap-3 justify-around items-center">
         {
           SOCIAL_MEDIA.map(({ url, icon }) => (
-            <Link to={url} target="_blank" class="hover:text-slate-100 dark:hover:text-black-500">
+            <Link
+              to={url}
+              target="_blank"
+              class="hover:text-slate-100 dark:hover:text-black-500"
+            >
               <Icon
                 name={icon}
                 size="2rem"
@@ -77,14 +82,11 @@ import Container from '@ui/container.svelte'
     <article
       class="flex gap-2 items-end order-3 flex-wrap-reverse self-start lg:justify-end min-w-max"
     >
-      <Link
-        class="px-10 hover:text-brown-500 dark:hover:bg-brown-500 active:text-brown-500 dark:active:bg-brown-500 md:text-xl"
-        text="Download CV"
-        to="/"
-        as="button"
+      <DownloadResumeButton />
+
+      <ContactMeLink
+        className="px-12 hover:text-brown-500 dark:hover:bg-brown-500 active:text-brown-500 dark:active:bg-brown-500 md:text-xl"
       />
-      <ContactMeLink className="px-12 hover:text-brown-500 dark:hover:bg-brown-500 active:text-brown-500 dark:active:bg-brown-500 md:text-xl" />
     </article>
   </article>
-
 </Container>

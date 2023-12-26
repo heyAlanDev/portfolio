@@ -40,7 +40,9 @@
   })
 </script>
 
-<article class="rounded-2xl p-4 max-w-full bg-purple-400 dark:bg-neutral-800 {$$props.class}">
+<article
+  class="rounded-2xl p-4 max-w-full bg-purple-400 dark:bg-neutral-800 {$$props.class}"
+>
   <header class="flex justify-between content-center mb-2">
     <h4 class="font-serif text-sm font-semibold">Habilidades blandas:</h4>
 

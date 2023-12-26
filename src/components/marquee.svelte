@@ -4,7 +4,7 @@
 </script>
 
 <article
-  class="rounded-2xl p-4 min-w-full  text-current font-bold select-none {$$props.class}"
+  class="rounded-2xl p-4 min-w-full text-current font-bold select-none {$$props.class}"
 >
   <div
     class="overflow-hidden whitespace-nowrap relative capitalize self-center will-change-transform h-full before:left-0 after:right-0 before:bg-gradient-to-r after:bg-gradient-to-l"

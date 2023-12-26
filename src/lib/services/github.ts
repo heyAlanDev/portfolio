@@ -4,7 +4,7 @@ import type { ObjectFile } from '../api-github-response'
 
 const APIGITHUB_GRAPQL_URL = 'https://api.github.com/graphql'
 
-export async function getUsername (): Promise<string> {
+export async function getUsername(): Promise<string> {
   const res = await fetch(APIGITHUB_GRAPQL_URL, {
     method: 'POST',
     headers: {
@@ -50,7 +50,7 @@ export const getRepoFile = async (
   return data.repository.object
 }
 
-export async function getLatestRepos (limit = 15): Promise<LatestProject[]> {
+export async function getLatestRepos(limit = 15): Promise<LatestProject[]> {
   const res = await fetch(APIGITHUB_GRAPQL_URL, {
     method: 'POST',
     headers: {
@@ -118,7 +118,7 @@ export async function getLatestRepos (limit = 15): Promise<LatestProject[]> {
   return latestProjects
 }
 
-export async function getPinnedRepos (limit = 5): Promise<FavoriteProject[]> {
+export async function getPinnedRepos(limit = 5): Promise<FavoriteProject[]> {
   const res = await fetch(APIGITHUB_GRAPQL_URL, {
     method: 'POST',
     headers: {
