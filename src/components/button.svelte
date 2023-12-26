@@ -11,4 +11,5 @@
   {...restProps}
 >
   {text}
+  <slot name="icon" />
 </button>

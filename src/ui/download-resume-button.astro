@@ -1,0 +1,104 @@
+---
+import Button from '@components/button.svelte'
+import Icon from '@components/icon.svelte'
+
+const resumeFiles = {
+  english: [
+    {
+      name: 'resume'
+    },
+    {
+      name: 'resume-ats'
+    }
+  ],
+  español: [
+    {
+      name: 'curriculum'
+    },
+    {
+      name: 'curriculum-ats'
+    }
+  ]
+}
+---
+
+<div class="relative">
+  <Button
+    data-dropdown-state="close"
+    class="flex items-center justify-center gap-2 text-base !py-3 pl-6 pr-4 text-brown-500 rounded-full w-max md:text-xl dark:text-black-400 dark:!border-brown-500 dark:!bg-brown-500 dark:hover:!bg-brown-700 dark:hover:!border-brown-700 dark:active:!bg-brown-700 dark:active:!border-brown-700 dark:focus:ring-gray-700 peer capitalize"
+    text="Resume"
+  >
+    <Icon name="arrow-bottom" class="scale-125" size="1.5rem" slot="icon" />
+  </Button>
+
+  <div
+    id="dropdownAvatarName"
+    class="z-50 absolute hidden mt-2 top-full bg-neutral-800 divide-y divide-neutral-600 rounded-lg shadow-gray-500 shadow peer-data-[dropdown-state=open]:block max-lg:left-0 lg:right-0"
+  >
+    <div class="px-4 py-3 text-sm text-slate-100">
+      <p class="font-medium">Alan Valencia</p>
+      <a
+        href="mailto:contact@alanvalencia.me"
+        class="truncate hover:text-brown-500 active:text-brown-500"
+        >contact@alanvalencia.me</a
+      >
+    </div>
+
+    {
+      Object.keys(resumeFiles).map(resumeLanguage => {
+        const language = resumeLanguage as keyof typeof resumeFiles
+
+        return (
+          <ul
+            class="px-4 py-2 text-sm text-slate-100 capitalize"
+            aria-labelledby="dropdownInformdropdownAvatarNameButtonationButton"
+          >
+            {language}
+            {resumeFiles[language].map(({ name }) => {
+              const lan = {
+                español: 'es',
+                english: 'en'
+              }
+
+              return (
+                <li>
+                  <a
+                    href={`/files/${lan[language]}/${name}.pdf`}
+                    target="_blank"
+                    class="block px-6 py-2 hover:bg-neutral-600 capitalize"
+                  >
+                    {name.split('-').join(' ')}
+                  </a>
+                </li>
+              )
+            })}
+          </ul>
+        )
+      })
+    }
+
+    <div class="px-4 py-3 text-sm text-slate-100">
+      <p class="font-medium">
+        <a
+          href="/files/all-resumes.zip"
+          class="block px-6 py-2 hover:bg-neutral-600 capitalize"
+          download="alan-valencia.zip"
+        >
+          Download All
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const $dropdown = document.querySelector('button[data-dropdown-state]')
+
+  $dropdown?.addEventListener('click', element => {
+    const { dropdownState } = (element.target as HTMLElement).dataset
+
+    dropdownState === 'close'
+      ? ((element.target as HTMLElement).dataset.dropdownState = 'open')
+      : ((element.target as HTMLElement).dataset.dropdownState = 'close')
+  })
+</script>
