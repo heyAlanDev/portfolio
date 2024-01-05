@@ -19,10 +19,10 @@ const i18n = getI18N(currentLocale)
         {i18n.CONTACT_TEXT_1}
       </p>
       <Link
-        to=`mailto:${i18n.CONTACT_MAIL}`
+        to={`mailto:${i18n.CONTACT_EMAIL}`}
         class="font-semibold font-serif text-4xl !lowercase whitespace-pre-line"
       >
-        {i18n.CONTACT_MAIL.split('@').join('@\n')}
+        {i18n.CONTACT_EMAIL.split('@').join('@\n')}
       </Link>
 
       <p class="font-medium">

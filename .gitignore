@@ -19,3 +19,7 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+#ignore linkedin files/feat for error
+src/lib/services/linkedin.ts
+src/lib/api-linkedin-response.d.ts
