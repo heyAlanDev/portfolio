@@ -4,7 +4,7 @@ import type { ObjectFile } from '../api-github-response'
 
 const APIGITHUB_GRAPQL_URL = 'https://api.github.com/graphql'
 
-export async function getUsername(): Promise<string> {
+export async function getUsername (): Promise<string> {
   const res = await fetch(APIGITHUB_GRAPQL_URL, {
     method: 'POST',
     headers: {
@@ -24,6 +24,30 @@ export async function getUsername(): Promise<string> {
   const { login: username } = data.viewer
 
   return username
+}
+
+export const getAllReposDone = async (): Promise<number> => {
+  const res = await fetch(APIGITHUB_GRAPQL_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: `bearer ${import.meta.env.GITHUB_TOKEN}`
+    },
+    body: JSON.stringify({
+      query: `
+      query {
+        viewer {
+          repositories(first: 100, orderBy: {field: UPDATED_AT, direction: DESC}) {
+            totalCount 
+          }
+        }
+      }`
+    })
+  })
+
+  const { data }: APIGraphQlGithubResponse = await res.json()
+  const { totalCount } = data.viewer.repositories
+
+  return totalCount
 }
 
 export const getRepoFile = async (
@@ -50,7 +74,7 @@ export const getRepoFile = async (
   return data.repository.object
 }
 
-export async function getLatestRepos(limit = 15): Promise<LatestProject[]> {
+export async function getLatestRepos (limit = 15): Promise<LatestProject[]> {
   const res = await fetch(APIGITHUB_GRAPQL_URL, {
     method: 'POST',
     headers: {
@@ -118,7 +142,7 @@ export async function getLatestRepos(limit = 15): Promise<LatestProject[]> {
   return latestProjects
 }
 
-export async function getPinnedRepos(limit = 5): Promise<FavoriteProject[]> {
+export async function getPinnedRepos (limit = 5): Promise<FavoriteProject[]> {
   const res = await fetch(APIGITHUB_GRAPQL_URL, {
     method: 'POST',
     headers: {

@@ -1,7 +1,7 @@
 ---
 import Menu from './menu.svelte'
 import ToggleThemeMode from './toggle-theme-mode.svelte'
-import ToggleLenguage from './toggle-language.svelte'
+import ToggleLenguage from './toggle-language.astro'
 import { currentYear } from '@utils/date'
 import links from '@lib/page-navigation-links.json'
 import Link from './link.svelte'
@@ -28,7 +28,7 @@ const { className } = Astro.props
     >
     </div>
     <div class="flex justify-between items-center text-white">
-      <a href="/" class="z-20">
+      <a href={Astro.currentLocale === 'en' ? '/' : '/es'} class="z-20">
         <img src="favicon.svg" alt="logo" class="w-36" />
       </a>
 
@@ -58,7 +58,7 @@ const { className } = Astro.props
     >
       <div class="flex justify-center items-center gap-2 pb-2">
         <ToggleThemeMode client:visible />
-        <ToggleLenguage client:visible />
+        <ToggleLenguage />
       </div>
       <p class="text-sm text-center py-2 md:hidden">
         ©{currentYear} by Alan Valencia.
@@ -66,26 +66,3 @@ const { className } = Astro.props
     </footer>
   </section>
 </header>
-
-<!-- <script>
-    const $navbarElementsToToggle = document.querySelectorAll('[data-navbar="close"]')
-    const $buttonNavbar = document.querySelector('button[data-navbar]')
-    const $linksNavbar = document.querySelectorAll('nav a')
-
-    const toogleNavbarState = () => {
-      $navbarElementsToToggle.forEach((element) => {
-        const { navbar } = (element as HTMLElement).dataset
-
-        navbar === 'close'
-          ? ((element as HTMLElement).dataset.navbar = 'open')
-          : ((element as HTMLElement).dataset.navbar = 'close')
-      })
-    }
-
-    $linksNavbar?.forEach(link => {
-      link.addEventListener('click', toogleNavbarState)
-    })
-
-    $buttonNavbar?.addEventListener('click', toogleNavbarState)
-
-</script> -->

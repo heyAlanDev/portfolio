@@ -1,42 +1,52 @@
-<script>
+---
+import { shortFormatDate,substractDate } from "@utils/date";
+import { getI18N } from "src/i18n";
+
+
+  const i18n = getI18N(Astro.currentLocale)
+
   const experiences = [
     {
-      job: 'Fullstack developer',
-      startDate: 'Ene 2020',
-      endDate: 'Dic 2023',
+      job: i18n.FULLSTACK_DEVELOPER,
+      initDate: shortFormatDate('2020-01-01', Astro.currentLocale),
+      endDate: shortFormatDate('2021-12', Astro.currentLocale),
       logros: [
         'Enfatiza tus logros más sobresalientes en cada rol. Esto podría incluir mejoras en eficiencia, proyectos exitosos, reconocimientos o premios recibidos, o contribuciones al crecimiento de la empresa.'
       ],
       company: 'Freelance',
       description:
-        'Detalla tus responsabilidades y logros clave en cada posición. Utiliza viñetas y resalta las tareas y proyectos más relevantes. Cuantifica tus logros siempre que sea posible para demostrar tu impacto.'
+        'Detalla tus responsabilidades y logros clave en cada posición. Utiliza viñetas y resalta las tareas y proyectos más relevantes. Cuantifica tus logros siempre que sea posible para demostrar tu impacto.',
+       
     },
     {
-      job: 'Fullstack developer',
-      startDate: 'Ene 2020',
-      endDate: 'Dic 2023',
+      job: i18n.FULLSTACK_DEVELOPER,
+      initDate: shortFormatDate('2020-01-01', Astro.currentLocale),
+      endDate: shortFormatDate('2020-01-15', Astro.currentLocale),
       logros: [
         'Enfatiza tus logros más sobresalientes en cada rol. Esto podría incluir mejoras en eficiencia, proyectos exitosos, reconocimientos o premios recibidos, o contribuciones al crecimiento de la empresa.'
       ],
       company: 'Freelance',
       description:
-        'Detalla tus responsabilidades y logros clave en cada posición. Utiliza viñetas y resalta las tareas y proyectos más relevantes. Cuantifica tus logros siempre que sea posible para demostrar tu impacto.'
+        'Detalla tus responsabilidades y logros clave en cada posición. Utiliza viñetas y resalta las tareas y proyectos más relevantes. Cuantifica tus logros siempre que sea posible para demostrar tu impacto.',
+       
     },
     {
-      job: 'Fullstack developer',
-      startDate: 'Ene 2020',
-      endDate: 'Dic 2023',
+      job: i18n.FULLSTACK_DEVELOPER,
+      initDate: shortFormatDate('2020-01-01', Astro.currentLocale),
+      endDate: shortFormatDate('2020-03-01', Astro.currentLocale),
       logros: [
         'Enfatiza tus logros más sobresalientes en cada rol. Esto podría incluir mejoras en eficiencia, proyectos exitosos, reconocimientos o premios recibidos, o contribuciones al crecimiento de la empresa.'
       ],
       company: 'Freelance',
       description:
-        'Detalla tus responsabilidades y logros clave en cada posición. Utiliza viñetas y resalta las tareas y proyectos más relevantes. Cuantifica tus logros siempre que sea posible para demostrar tu impacto.'
+        'Detalla tus responsabilidades y logros clave en cada posición. Utiliza viñetas y resalta las tareas y proyectos más relevantes. Cuantifica tus logros siempre que sea posible para demostrar tu impacto.',
+       
     }
   ]
-</script>
+---
 
-{#each experiences as { job, startDate, endDate, description, company }}
+{ 
+experiences.map(({ job, initDate, endDate, description, company }) => (
   <details
     class="bg-purple-300 dark:bg-neutral-500 p-4 rounded-2xl my-2 group"
     name="experience"
@@ -49,7 +59,7 @@
           {job}
         </h5>
         <p class="text-base font-light font-sans capitalize">
-          {company} (2 años)
+          {company} · {substractDate(endDate, initDate, Astro.currentLocale)}
         </p>
       </header>
       <div
@@ -58,8 +68,8 @@
     </summary>
 
     <p class="text-sm font-light font-sans capitalize whitespace-nowrap">
-      {startDate} - {endDate}
+      {initDate} - {endDate}
     </p>
     <p>{description}</p>
   </details>
-{/each}
+))}

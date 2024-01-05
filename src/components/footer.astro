@@ -4,6 +4,10 @@ import SOCIAL_MEDIA from '@lib/social-media.json'
 import Link from '@components/link.svelte'
 import { currentYear as year } from '@utils/date'
 import Container from '@ui/container.svelte'
+import { getI18N } from 'src/i18n'
+
+const { currentLocale } = Astro
+const i18n = getI18N(currentLocale)
 ---
 
 <footer id="contact">
@@ -12,22 +16,22 @@ import Container from '@ui/container.svelte'
       class="grid gap-16 p-8 text-2xl md:py-16 md:px-14 lg:py-20 lg:grid-cols-2 lg:gap-32 xl:pt-32 xl:text-3xl"
     >
       <p class="font-medium">
-        Te envío un fuerte abrazo y ¡espero con ansias el tuyo!, aqui....
+        {i18n.CONTACT_TEXT_1}
       </p>
       <Link
-        to="mailto:contacto@alanvalencia.me"
+        to=`mailto:${i18n.CONTACT_MAIL}`
         class="font-semibold font-serif text-4xl !lowercase whitespace-pre-line"
       >
-        {'contacto@\nalanvalencia.me'}
+        {i18n.CONTACT_MAIL.split('@').join('@\n')}
       </Link>
 
       <p class="font-medium">
-        O aqui, se que esto va a ser el comienzo de algo increible
+        {i18n.CONTACT_TEXT_2}
       </p>
 
-      <ContactForm API_KEY={import.meta.env.WEB3FORMS_API_KEY} client:load />
+      <ContactForm API_KEY={import.meta.env.WEB3FORMS_API_KEY} {currentLocale} client:visible />
 
-      <p class="font-medium">Sigueme en</p>
+      <p class="font-medium">{i18n.FOLLOW_ME}</p>
       <article class="flex flex-col lg:flex-row justify-between">
         <ul>
           {
@@ -40,7 +44,7 @@ import Container from '@ui/container.svelte'
         </ul>
         <div class="flex flex-col text-sm">
           <span class="opacity-80 w-24 h-6 lines"></span>
-          <span>© {year} by Alan Valencia</span>
+          <span>© {year } {i18n.BY_ME}</span>
         </div>
       </article>
     </section>
