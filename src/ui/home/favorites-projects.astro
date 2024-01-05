@@ -6,10 +6,12 @@ import FullImageProject from '@ui/full-image-project.astro'
 import SquareImageProject from '@ui/square-image-project.astro'
 import Container from '@ui/container.svelte'
 import { getPinnedRepos } from '@lib/services/github'
+import { getI18N } from 'src/i18n'
 
 const githubUrl = SOCIAL_MEDIA.find(social => social.name === 'github')
 
 const favoriteProjects = await getPinnedRepos()
+const i18n = getI18N(Astro.currentLocale)
 
 const colors = {
   red: 'text-red-400 from-red-400 to-red-400',
@@ -21,7 +23,7 @@ const colors = {
 ---
 
 <Container class="text-orange-400 dark:from-current" id="projects">
-  <DetailedTitle title="Favorite \nprojects" />
+  <DetailedTitle title={i18n.FAVORITE_PROJECTS} />
 </Container>
 
 {
@@ -46,7 +48,7 @@ const colors = {
   <Link to={githubUrl?.url} target="_blank" as="no-animate">
     <DetailedTitle
       class="!text-current"
-      title="See \nMore"
+      title={i18n.SEE_MORE}
       direction="horizontal"
     />
   </Link>

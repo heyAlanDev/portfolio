@@ -1,5 +1,6 @@
 ---
 import Link from '@components/link.svelte'
+import { getI18N } from 'src/i18n'
 
 export interface Props {
   text: string
@@ -9,7 +10,7 @@ export interface Props {
 }
 
 const {
-  text = 'Hire me',
+  text = getI18N(Astro.currentLocale).HIRE_ME_LABEL,
   as = 'button',
   className,
   disabled,

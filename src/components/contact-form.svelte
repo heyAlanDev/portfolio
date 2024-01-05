@@ -5,8 +5,12 @@
   import Web3formsConfig from '@lib/web3forms-config.svelte'
   import OrbitalSpinner from './orbital-spinner.svelte'
   import { fade } from 'svelte/transition'
+  import { getI18N } from 'src/i18n'
 
   export let API_KEY = ''
+  export let currentLocale = 'en'
+
+  const i18n = getI18N(currentLocale)
 
   let textareaHeight = 0
   let status: 'nothing' | 'pending...' | 'finish' | 'resolved' = 'nothing'
@@ -60,6 +64,11 @@
   }
 </script>
 
+<!-- 
+FIXME: fix the input focus animation
+TODO: Make validation of formulary letter the first focus change (no the user typing)
+ -->
+
 <form
   id="contact-form"
   action="https://api.web3forms.com/submit"
@@ -71,21 +80,21 @@
 
   <fieldset>
     <label>
-      Name*
+      {i18n.NAME_LABEL}*
       <input placeholder=" " type="text" id="name" required />
     </label>
   </fieldset>
 
   <fieldset>
     <label>
-      Email*
+      {i18n.EMAIL_LABEL}*
       <input placeholder=" " type="email" name="email" id="email" required />
     </label>
   </fieldset>
 
   <fieldset>
     <label>
-      Message*
+      {i18n.MESSAGE_LABEL}*
       <textarea
         name="message"
         class="min-h-[2rem] h-8 overflow-hidden"
@@ -104,7 +113,7 @@
         class="appearance-none border-2 border-current w-8 h-8 aspect-square relative after:absolute after:left-1/2 after:top-[45%] checked:bg-current checked:after:content-[''] checked:after:border-green-400 checked:after:border-r-4 checked:after:border-b-4 checked:after:rotate-45 checked:after:w-2/5 checked:after:h-4/5 checked:after:-translate-x-1/2 checked:after:-translate-y-1/2 dark:checked:after:border-neutral-800"
         required
       />
-      I agree with the storage and processing of my personal data
+      {i18n.TERMS_CONDITIONS_LABEL}
     </label>
   </fieldset>
 

@@ -1,65 +1,30 @@
 ---
 import Link from '@components/link.svelte'
 import Certifications from './certifications.astro'
-import Experiences from './experiences.svelte'
+import Experiences from './experiences.astro'
 import Icon from '@components/icon.svelte'
 import Marquee from '@components/marquee.svelte'
 import SoftSkills from '@components/soft-skills.svelte'
 import ContactMeLink from '@ui/contact-me-link.astro'
 import Container from '@ui/container.svelte'
+import aboutMeData from '@lib/about-me'
+import { getI18N } from 'src/i18n'
 
-const ACHIEVEMENTS = [
-  {
-    value: '2+',
-    description: 'Años de experiencia'
-  },
-  {
-    value: '29+',
-    description: 'Proyectos Hechos'
-  },
-  {
-    value: '13+',
-    description: 'Clientes Satisfechos'
-  }
-]
+// TODO: add linkedin integration for about data
+// import { getCertifications } from '@lib/services/linkedin'
+// await getCertifications()
+// TODO: in aboutme section add an use the redsocials
+// TODO: in aboutme section add an description about me
+// TODO: implemented the experience and add info to aboutme section
+// TODO: implemented the certifications and add info to aboutme section
 
-const SOCIAL_NETWORKS = [
-  {
-    to: '#top',
-    social: 'github',
-    color: 'white'
-  },
-  {
-    to: '#top',
-    social: 'linkedin',
-    color: 'blue'
-  },
-  {
-    to: '#top',
-    social: 'twitter-x',
-    color: 'blue'
-  },
-  {
-    to: '#top',
-    social: 'instagram',
-    color: 'purple'
-  },
-  {
-    to: '#top',
-    social: 'reddit',
-    color: 'orange'
-  },
-  {
-    to: '#top',
-    social: 'discord',
-    color: 'blue'
-  },
-  {
-    to: '#contact-form',
-    social: 'form-textbox',
-    color: 'green'
-  }
-]
+const {
+  ACHIEVEMENTS,
+  SOCIAL_NETWORKS
+} = aboutMeData
+
+const { currentLocale } = Astro
+const i18n = getI18N(currentLocale)
 ---
 
 <Container class="from-purple-500 to-purple-500 py-4" id="about">
@@ -71,10 +36,10 @@ const SOCIAL_NETWORKS = [
       class="rounded-2xl p-4 w-full bg-purple-400 dark:bg-neutral-800 row-start-1 font-serif xl:col-span-3 xl:row-span-2"
     >
       <h3 class="text-2xl font-bold mb-1">
-        Tienes ideas geniales en mente, Hagamos que sean codigo juntos.
+        {i18n.ABOUT_TITLE}
       </h3>
       <ContactMeLink
-        text="hagamosla digital"
+        text={i18n.ABOUT_CONTACT_LABEL}
         className="font-bold float-right hover:text-purple-400 dark:hover:bg-purple-500 dark:hover:border-purple-500 dark:hover:text-neutral-800 active:text-purple-400 dark:active:bg-purple-500 dark:active:border-purple-500 dark:active:text-neutral-800"
       />
     </header>
@@ -83,18 +48,14 @@ const SOCIAL_NETWORKS = [
       class="flex gap-1 md:col-start-1 md:row-start-2 xl:col-span-3 xl:row-span-2 xl:col-start-1 xl:row-start-3"
     >
       {
-        ACHIEVEMENTS.map(({ value, description }, index) => (
-          <p
-            class:list={[
-              'text-xl/3 text-center font-bold rounded-2xl py-4 px-2 w-1/3 grid place-content-center',
-              { 'bg-emerald-400': index === 0 },
-              { 'bg-amber-400': index === 1 },
-              { 'bg-rose-400': index === 2 }
-            ]}
-          >
-            {value} <br class="block p-1 content-['']" />
-            <span class="text-sm/3 none font-normal w-min">{description}</span>
-          </p>
+        ACHIEVEMENTS.map(({ value, description }, i) => (
+          <article class:list={['text-xl/3 lg:text-2xl/3 text-center rounded-2xl py-4 px-2 w-1/3 grid place-content-center capitalize',
+            { 'bg-emerald-400': i === 0 }, { 'bg-amber-400': i === 1 }, { 'bg-rose-400': i === 2 }]}>
+            <p class="mb-2 font-bold">{value}</p>
+            <p class="text-sm/3 lg:text-base/4 font-semibold w-min">
+              {i18n[description]}
+            </p>
+          </article>
         ))
       }
     </article>
@@ -102,7 +63,7 @@ const SOCIAL_NETWORKS = [
     <article
       class="rounded-2xl p-4 w-full bg-purple-400 dark:bg-neutral-800 flex justify-between items-center xl:col-span-2 xl:col-start-6 xl:row-start-2"
     >
-      <h5 class="font-serif text-base font-semibold">Nombre:</h5>
+      <h5 class="font-serif text-base font-semibold">{i18n.NAME_LABEL}:</h5>
       <p class="text-sm capitalize w-max self-center font-semibold">
         Alan Smith Valencia Izquierdo
       </p>
@@ -126,21 +87,14 @@ const SOCIAL_NETWORKS = [
     <article
       class="rounded-2xl p-4 w-full bg-purple-400 dark:bg-neutral-800 md:row-start-6 xl:col-span-2 xl:row-span-4 xl:col-start-6 xl:row-start-7"
     >
-      <header class="flex justify-between content-center mb-2">
-        <h4 class="text-2xl font-bold font-serif">About me</h4>
-        <a href="/" class="capitalize self-center">resume</a>
-      </header>
+      <h4 class="text-2xl font-bold font-serif mb-2">{i18n.ABOUT_ME}</h4>
       <p>
-        Lorem ipsum dolor sit amet consectetur. Id sodales sem lobortis odio.
-        Diam nisi senectus augue eget semper pharetra. Ullamcorper tellus odio
-        morbi lorem hendrerit. Consectetur nisi sed pellentesque ac tortor
-        egestas. Enim tempor tempus sed morbi. Elit in sed mattis interdum a in
-        vitae urna. Et pellentesque pharetra sapien nec arcu in. Tristique odio
-        lectus sit posuere.
+        {i18n.ABOUT_ME_TEXT}
       </p>
     </article>
 
     <SoftSkills
+      {currentLocale}
       class="bg-purple-400 dark:bg-neutral-800 md:row-start-5 xl:col-span-2 xl:row-span-2 xl:col-start-6 xl:row-start-3"
       client:visible
     />
@@ -148,12 +102,12 @@ const SOCIAL_NETWORKS = [
     <article
       class="rounded-2xl p-4 w-full bg-purple-400 dark:bg-neutral-800 md:row-start-5 xl:col-span-2 xl:col-start-6 xl:row-start-5"
     >
-      <h4 class="font-serif text-base font-semibold mb-2">Idiomas:</h4>
+      <h4 class="font-serif text-base font-semibold mb-2">{i18n.LANGUAGES}:</h4>
 
       <footer class="flex justify-between gap-2">
-        <p class="w-min text-center font-bold">Español (Nativo)</p>
-        <p class="w-min text-center font-bold">Ingles (A2)</p>
-        <p class="w-min text-center font-bold">Frances (A1)</p>
+        <p class="w-min text-center font-bold">{i18n.SPANISH_LEVEL}</p>
+        <p class="w-min text-center font-bold">{i18n.ENGLISH_LEVEL}</p>
+        <p class="w-min text-center font-bold">{i18n.FRENCH_LEVEL}</p>
       </footer>
     </article>
 
@@ -161,8 +115,8 @@ const SOCIAL_NETWORKS = [
       class="rounded-2xl p-4 w-full bg-purple-400 dark:bg-neutral-800 md:row-start-6 content-between xl:col-span-3 xl:row-span-2 xl:col-start-1 xl:row-start-5"
     >
       <header class="flex justify-between content-center">
-        <h4 class="text-2xl font-bold font-serif">Certification</h4>
-        <a href="/" class="capitalize self-center">see all</a>
+        <h4 class="text-2xl font-bold font-serif">{i18n.EDUCATION_CERTIFICATIONS}</h4>
+        <a href="/" class="capitalize self-center">{i18n.SEE_ALL}</a>
       </header>
 
       <Certifications />
@@ -172,8 +126,8 @@ const SOCIAL_NETWORKS = [
       class="rounded-2xl p-4 w-full bg-purple-400 dark:bg-neutral-800 md:col-span-2 xl:col-span-5 xl:row-span-4 xl:col-start-1 xl:row-start-7"
     >
       <header class="flex justify-between content-center">
-        <h4 class="text-2xl font-bold font-serif">Experience</h4>
-        <a href="/" class="capitalize self-center">see all</a>
+        <h4 class="text-2xl font-bold font-serif">{i18n.EXPERIENCE}</h4>
+        <a href="/" class="capitalize self-center">{i18n.SEE_ALL}</a>
       </header>
       <Experiences />
     </article>
@@ -201,10 +155,8 @@ const SOCIAL_NETWORKS = [
     <Marquee
       class="bg-purple-400 dark:bg-neutral-800 from-purple-400 dark:from-neutral-800 md:col-span-2 md:row-span-5 xl:col-span-4 xl:col-start-4 xl:row-start-1 xl:row-span-1"
     >
-      <p class="m-auto">• Innovando el futuro, una línea de código a la vez!</p>
-      <p class="m-auto hidden md:block">
-        • Innovando el futuro, una línea de código a la vez!
-      </p>
+      <p class="m-auto ml-1">• {i18n.PHRASE_TRANSFORM}</p>
+      <p class="m-auto ml-1">• {i18n.PHRASE_INNOVATION}</p>
     </Marquee>
   </section>
 </Container>

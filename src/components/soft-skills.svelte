@@ -3,6 +3,7 @@
   import { fly } from 'svelte/transition'
   import type { IconName } from '@lib/icons'
   import Icon from './icon.svelte'
+  import { getI18N } from 'src/i18n'
 
   interface SoftSkill {
     icon: IconName
@@ -10,21 +11,22 @@
   }
 
   const softSkills: SoftSkill[] = [
-    { icon: 'continuos-change', label: 'Adaptabilidad' },
+    { icon: 'continuos-change', label: 'ADAPTABILITY' },
     {
       icon: 'continuos-learning',
-      label: 'Aprendizaje Continuo'
-    },
+      label: 'CONTINUOUS_LEARNING'},
     {
-      icon: 'solving-problems',
-      label: 'Solucion a problemas'
+      icon: 'solving-problems', label: 'PROBLEM_SOLVING'
     },
-    { icon: 'critical-thinking', label: 'Creatividad' },
+    { icon: 'critical-thinking', label: 'CREATIVITY' },
     {
       icon: 'continuos-change',
-      label: 'Pensamiento Crítico'
+      label: 'CRITICAL_THINKING'
     }
   ]
+
+  export let currentLocale = 'en'
+  const i18n = getI18N(currentLocale)
 
   let selectedSkillIndex = 0
 
@@ -44,14 +46,14 @@
   class="rounded-2xl p-4 max-w-full bg-purple-400 dark:bg-neutral-800 {$$props.class}"
 >
   <header class="flex justify-between content-center mb-2">
-    <h4 class="font-serif text-sm font-semibold">Habilidades blandas:</h4>
+    <h4 class="font-serif text-sm font-semibold">{i18n.SOFT_SKILLS}:</h4>
 
     {#key selectedSkillIndex}
       <p
         class="capitalize font-bold self-center text-sm will-change-auto"
         in:fly={{ y: -20 }}
       >
-        {softSkills[selectedSkillIndex].label}
+        {i18n[`${softSkills[selectedSkillIndex].label}_SKILL`]}
       </p>
     {/key}
   </header>

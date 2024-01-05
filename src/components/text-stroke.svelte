@@ -1,6 +1,6 @@
-<script>
-  export let upText = 'Fullstack'
-  export let downText = 'Developer'
+<script lang="ts">
+  export let text = 'FullStack Developer'
+  const [upText, downText] = text.split(' ')
 </script>
 
 <svg

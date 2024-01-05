@@ -4,36 +4,25 @@ import '@fontsource-variable/archivo'
 
 import Navbar from '@components/navbar.astro'
 import Footer from '@components/footer.astro'
+import { getI18N } from '../i18n/'
 
-interface Props {
-  title: string
-}
-
-const { title } = Astro.props
+const i18n = getI18N(Astro.currentLocale)
 ---
 
 <!--
 FIXME: fix the font jump
-FIXME: fix the input focus animation
-TODO: implemented the i118n feat to the project
 
-TODO: Connect linkedin api for the aboutme
-TODO: in aboutme section add an use the redsocials
-TODO: implemented the experience and add info to aboutme section
-TODO: implemented the certifications and add info to aboutme section
 TODO: implemented the case studios pages integration and paths
-
-TODO: Make validation of formulary letter the first focus change (no the user typing)
 -->
 
 <!doctype html>
 <html lang="es" class="bg-black-400 font-sans">
   <head>
     <meta charset="UTF-8" />
-    <title>{title ?? 'Alan Valencia'}</title>
+    <title>{i18n.SEO_TITLE}</title>
     <meta
       name="description"
-      content="Impulso la innovación como un apasionado full-stack developer. Desde la creación de interfaces de usuario cautivadoras hasta el diseño de arquitecturas robustas en el back-end, mi enfoque integral ofrece soluciones digitales excepcionales. Explora mi portafolio para descubrir cómo puedo llevar tu proyecto al siguiente nivel. ¡Convierte tus ideas en experiencias digitales impactantes con mi experiencia en desarrollo full-stack!"
+      content={i18n.SEO_DESCRIPTION}
     />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />

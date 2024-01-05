@@ -1,0 +1,16 @@
+---
+import Layout from '@layouts/layout.astro'
+import AboutMe from '@ui/home/about-me.astro'
+import FavoritesProjects from '@ui/home/favorites-projects.astro'
+import Hero from '@ui/home/hero.astro'
+import TechsToolsSkills from '@ui/home/techs-tools-skills.astro'
+---
+
+<Layout>
+  <main>
+    <Hero />
+    <FavoritesProjects />
+    <AboutMe />
+    <TechsToolsSkills id="tech-tool" />
+  </main>
+</Layout>

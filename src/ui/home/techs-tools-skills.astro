@@ -6,6 +6,7 @@ import type { TechTool } from '@lib/techs-tools'
 import { all as TECHS_TOOLS } from '@lib/tech-tools.json'
 import TechToolComponent from './tech-tool.astro'
 import Container from '@ui/container.svelte'
+import { getI18N } from 'src/i18n'
 
 const techToolsChunks = chunkArray(
   TECHS_TOOLS as TechTool[],
@@ -17,7 +18,7 @@ const [firstChunk, secondChunk] = techToolsChunks
 <Container class="dark:from-blue-500">
   <section class="flex flex-col py-16 gap-12 text-blue-500">
     <DetailedTitle
-      title="Tech and \nTools"
+      title={getI18N(Astro.currentLocale).TECHS_AND_TOOLS}
       class="!p-8 !pb-0 !max-h-min !text-current !aspect-auto"
     />
 

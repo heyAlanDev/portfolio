@@ -1,6 +1,7 @@
 ---
 import Button from '@components/button.svelte'
 import Icon from '@components/icon.svelte'
+import { getI18N } from 'src/i18n'
 
 const resumeFiles = {
   english: [
@@ -26,9 +27,9 @@ const resumeFiles = {
   <Button
     data-dropdown-state="close"
     class="flex items-center justify-center gap-2 text-base !py-3 pl-6 pr-4 text-brown-500 rounded-full w-max md:text-xl dark:text-black-400 dark:!border-brown-500 dark:!bg-brown-500 dark:hover:!bg-brown-700 dark:hover:!border-brown-700 dark:active:!bg-brown-700 dark:active:!border-brown-700 dark:focus:ring-gray-700 peer capitalize"
-    text="Resume"
+    text={getI18N(Astro.currentLocale).RESUME_LABEL}
   >
-    <Icon name="arrow-bottom" class="scale-125" size="1.5rem" slot="icon" />
+    <Icon name="arrow-bottom" class="scale-125 pointer-events-none" size="1.5rem" slot="icon" />
   </Button>
 
   <div
