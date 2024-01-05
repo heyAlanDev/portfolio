@@ -3,6 +3,8 @@ import Button from '@components/button.svelte'
 import Icon from '@components/icon.svelte'
 import { getI18N } from 'src/i18n'
 
+const i18n = getI18N(Astro.currentLocale)
+
 const resumeFiles = {
   english: [
     {
@@ -27,9 +29,14 @@ const resumeFiles = {
   <Button
     data-dropdown-state="close"
     class="flex items-center justify-center gap-2 text-base !py-3 pl-6 pr-4 text-brown-500 rounded-full w-max md:text-xl dark:text-black-400 dark:!border-brown-500 dark:!bg-brown-500 dark:hover:!bg-brown-700 dark:hover:!border-brown-700 dark:active:!bg-brown-700 dark:active:!border-brown-700 dark:focus:ring-gray-700 peer capitalize"
-    text={getI18N(Astro.currentLocale).RESUME_LABEL}
+    text={i18n.RESUME_LABEL}
   >
-    <Icon name="arrow-bottom" class="scale-125 pointer-events-none" size="1.5rem" slot="icon" />
+    <Icon
+      name="arrow-bottom"
+      class="scale-125 pointer-events-none"
+      size="1.5rem"
+      slot="icon"
+    />
   </Button>
 
   <div
@@ -39,10 +46,11 @@ const resumeFiles = {
     <div class="px-4 py-3 text-sm text-slate-100">
       <p class="font-medium">Alan Valencia</p>
       <a
-        href="mailto:contact@alanvalencia.me"
+        href={`mailto:${i18n.CONTACT_EMAIL}`}
         class="truncate hover:text-brown-500 active:text-brown-500"
-        >contact@alanvalencia.me</a
       >
+        {i18n.CONTACT_EMAIL}
+      </a>
     </div>
 
     {

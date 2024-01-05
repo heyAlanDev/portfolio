@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { onMount } from 'svelte'
   import Icon from './icon.svelte'
 
   const size = '2rem'
@@ -27,6 +28,8 @@
     }
     document.documentElement.classList.add('dark')
   }
+
+  onMount(updateTheme)
 </script>
 
 <button

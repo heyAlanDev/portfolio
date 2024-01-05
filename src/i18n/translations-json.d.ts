@@ -34,7 +34,7 @@ export interface I18N {
   EXPERIENCE: string
   EDUCATION_CERTIFICATIONS: string
   TECHS_AND_TOOLS: string
-  CONTACT_MAIL: string
+  CONTACT_EMAIL: string
   BY_ME: string
   FOLLOW_ME: string
   HAVE_A_HUG: string

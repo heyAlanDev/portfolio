@@ -10,6 +10,8 @@ interface Props {
   className?: string
 }
 
+// TODO: translate the nav links
+
 const { className } = Astro.props
 ---
 
@@ -57,7 +59,7 @@ const { className } = Astro.props
       class="max-md:animate-fade data-[navbar=close]:max-md:hidden data-[navbar=close]:max-md:text-transparent"
     >
       <div class="flex justify-center items-center gap-2 pb-2">
-        <ToggleThemeMode client:visible />
+        <ToggleThemeMode client:load />
         <ToggleLenguage />
       </div>
       <p class="text-sm text-center py-2 md:hidden">
